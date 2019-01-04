@@ -1,0 +1,194 @@
+	<table border="1" cellpadding="4" cellspacing="1">
+	<tr>
+		<th colspan="2">Create or Update Rule</th>
+	</tr>
+	<tr class="fdtan">
+		<td align="right" valign="top"><b>Name:</b></td>
+		<td valign="top">%HTML_BLOCK_1%</td>
+	</tr><tr class="fdtan">
+		<td align="right" valign="top"><b>Enabled:</b></td>
+		<td valign="top"><input type="checkbox" name="enabled" value="1" /></td>
+	</tr><tr class="fdtan">
+		<td align="right" valign="top"><b>Action:</b></td>
+		<td valign="top" nowrap="nowrap">
+[ <a href="%help_file%1127.html" target="_blank" class="onbrown">Help</a> ] <input type="radio" name="fr_action" value="0" id="ac0" /><label for="ac0"> Always Allow</label><br />
+[ <a href="%help_file%1128.html" target="_blank" class="onbrown">Help</a> ] <input type="radio" name="fr_action" value="1" id="ac1" /><label for="ac1"> Deny</label><br />
+[ <a href="%help_file%1129.html" target="_blank" class="onbrown">Help</a> ] <input type="radio" name="fr_action" value="2" id="ac2" /><label for="ac2"> Require Approval</label><br />
+[ <a href="%help_file%1098.html" target="_blank" class="onbrown">Help</a> ] <input type="radio" name="fr_action" value="3" id="ac3" /><label for="ac3"> Promote by </label><input name="promote_val" size="2" maxlength="2" style="text-align:right" /> times<br />
+[ <a href="%help_file%1124.html" target="_blank" class="onbrown">Help</a> ] <input type="radio" name="fr_action" value="4" id="ac4" /><label for="ac4"> Do not update URL during redirects</label><br />
+[ <a href="%help_file%1125.html" target="_blank" class="onbrown">Help</a> ] <input type="radio" name="fr_action" value="5" id="ac5" /><label for="ac5"> Index document, but do not follow links</label><br />
+[ <a href="%help_file%1126.html" target="_blank" class="onbrown">Help</a> ] <input type="radio" name="fr_action" value="6" id="ac6" /><label for="ac6"> Follow links, but do not index document</label></td>
+	</tr><tr class="fdtan">
+		<td align="right" valign="top"><b>Analyze:</b></td>
+		<td valign="top">
+			<input type="radio" name="fr_analyze" value="0" id="an0" /><label for="an0"> Hostname</label><br />
+			<input type="radio" name="fr_analyze" value="1" id="an1" /><label for="an1"> URL</label><br />
+			<input type="radio" name="fr_analyze" value="2" id="an2" /><label for="an2"> Document Text</label></td>
+	</tr><tr class="fdtan">
+		<td align="right" valign="top"><b>Minimum Occurrences:</b></td>
+		<td valign="top"><input name="occurrences" size="2" maxlength="2" style="text-align:right" />
+Number of times the strings or patterns must appear for this rule to take effect.</td>
+	</tr><tr class="fdtan">
+		<td align="right"><b>Logic:</b></td>
+		<td>
+			<input type="radio" name="fr_mode" value="0" id="l0" /><label for="l0"> Apply rule only if the required number of strings or patterns are present.</label><br />
+			<input type="radio" name="fr_mode" value="1" id="l1" /><label for="l1"> Always apply rule, unless the required number of strings or patterns are present.</label>
+		</td>
+	</tr><tr class="fdtan">
+		<td align="right" valign="top"><b>Strings:</b></td>
+		<td valign="top"><textarea name="litsubstr" rows="3" cols="60" style="wrap:soft"></textarea><br />Separate multiple entries with hard line breaks</td>
+	</tr><tr class="fdtan">
+		<td align="right" valign="top"><b>Patterns*:</b></td>
+		<td valign="top"><textarea name="substr" rows="3" cols="60" style="wrap:soft"></textarea><br />Separate multiple entries with hard line breaks</td>
+	</tr><tr class="fdtan">
+		<td align="right" valign="top"><b>Scope:</b></td>
+		<td valign="top">
+			<dl>
+				<dt><input type="radio" name="fr_apply_to" value="1" id="s1" /><label for="s1"> Apply to all realms</label></dt>
+				<dd></dd>
+				<dt><input type="radio" name="fr_apply_to" value="2" id="s2" /><label for="s2"> Apply only to these types of realms:</label></dt>
+				<dd>
+					<input type="checkbox" name="z1" value="1" id="z1" /><label for="z1"> Open Realms</label><br />
+					<input type="checkbox" name="z6" value="1" id="z6" /><label for="z6"> Filtered Realms</label><br />
+					<input type="checkbox" name="z2" value="1" id="z2" /><label for="z2"> File-Fed Realms</label><br />
+					<input type="checkbox" name="z3" value="1" id="z3" /><label for="z3"> Website Realms - Crawler Discovery</label><br />
+					<input type="checkbox" name="z4" value="1" id="z4" /><label for="z4"> Website Realms - File System Discovery</label><br />
+					<input type="checkbox" name="z5" value="1" id="z5" /><label for="z5"> Runtime Realms</label>
+				</dd>
+				<dt><input type="radio" name="fr_apply_to" value="3" id="s3" /><label for="s3"> Apply only to these specific realms:</label></dt>
+				<dd>
+					%HTML_BLOCK_2%
+				</dd>
+			</dl>
+			</td>
+	</tr>
+	</table>
+
+		<p><input type="submit" class="submit" value="Save Data" /></p>
+
+		<p><br /></p>
+
+	<p><b>Definitions / Help</b></p>
+
+	<dl>
+
+		<dt><b>Strings</b></dt>
+		<dd>
+			<p>Strings are treated as case insensitive substrings. String "Foo" will match "www.FOO.com".</p>
+		</dd>
+		<dt><b>Patterns</b></dt>
+		<dd>
+			<p>Patterns are interpreted as Perl regular expressions.</p>
+			<p>Patterns can include HTML, punctuation, Latin characters, and so on. All Perl regular expressions are supported except for the ?{}-style expressions. Here is a quick guide to using Perl regex:</p>
+
+			<table border="1" cellpadding="4" cellspacing="1">
+			<tr>
+				<td dir="ltr"><tt>.*</tt></td>
+				<td>standard wildcard, matches zero or many characters</td>
+			</tr>
+			<tr>
+				<td dir="ltr"><tt>\s*</tt></td>
+				<td>matches linear whitespace zero or many times (spaces and tabs)</td>
+			</tr>
+			<tr>
+				<td dir="ltr"><tt>\s+</tt></td>
+				<td>matches linear whitespace one or many times</td>
+			</tr>
+			<tr>
+				<td dir="ltr"><tt>\*</tt></td>
+				<td>escape sequence.  Matches literal asterisk *</td>
+			</tr>
+			<tr>
+				<td dir="ltr"><tt>\?</tt></td>
+				<td>escape sequence.  Matches literal question mark ?</td>
+			</tr>
+			</table>
+
+			<p>The question mark ? has a special meaning in Perl. If you want to use a literal ? in your pattern, put a backslash before it.</p>
+			<p>Correct: Forbid Sites includes "http://www.xav.com/notify/\?start"<br />
+			Incorrect: Forbid Sites includes "http://www.xav.com/notify/?start"</p>
+
+			<p>The asterisk * has a special meaning in Perl. If you want to use a wildcard in your pattern, use ".*"</p>
+			<p>Correct: Forbid Sites includes "oatmeal.*cookies"<br />
+			Incorrect: Forbid Sites includes "oatmeal*cookies"</p>
+
+			<p>If you want to have a pattern match that spans multiple lines, you should try to use the .* wildcard in place of the newline. Newline characters are represented with different underlying characters on different operating systems, so it's much safer to use wildcards.</p>
+
+		</dd>
+
+		<dt><b>Action:</b> Always Allow</dt>
+		<dd>
+
+			<p>For those few trusted sites that would otherwise be excluded by the rules.</p>
+
+			<p>For example, if you want to limit porn sites, and you could place a "Deny" rule on the substring "porn". Then one of your valued customers might complain that this rule is blocking access to his legitimate political website. You don't want to remove your anti-porn rule entirely, and you want to please your customer, and so you create an "Always Allow" rule for your customer's URL.</p>
+
+			<p>"Always Allow" overrides "Deny" and "Require Approval".</p>
+
+		</dd>
+
+		<dt><b>Action:</b> Deny</dt>
+		<dd>
+
+			<p>Prevents the document from being added to the index.  An error message will be returned instead.</p>
+
+			<p>For example, if you run a commerce site, you might create a deny rule for the URL's of your competitors.</p>
+
+			<p>"Deny" overrides "Require Approval".</p>
+		</dd>
+
+		<dt><b>Action:</b> Require Approval</dt>
+		<dd>
+
+			<p>The page is indexed, but placed in a holding area.  This page will not yet come up in visitor searches. The administrator is given a chance to review the page and then make a decision about whether or not to add it.</p>
+
+		</dd>
+
+		<dt><b>Action:</b> Promote</dt>
+		<dd>
+
+			<p>The page affected by a Promote rule will receive a higher ranking in the search engine result set.</p>
+			<p>This is a separate concept than "Always Allow", "Deny", or "Require Approval".</p>
+
+		</dd>
+
+		<dt><b>Action:</b> Do not update URL during redirects</dt>
+		<dd>
+			<p>Normally, FDSE will follow all redirects and will only record the URL and text of the final document. This makes following links faster for subsequent visitors, and it allows for a more honest presentation of where they will end up and what they will see when they follow a link in the search results.</p>
+
+			<p>Under some circumstances, particularly with affiliate sales programs, all visitors must experience the full redirect path rather than shortcutting to the final URL. When this action is used, FDSE will still record the text of the final document, but it will retain the original URL for presentation to visitors in the search results list.</p>
+			<p>This is a separate concept than "Always Allow", "Deny", or "Require Approval".</p>
+
+		</dd>
+
+		<dt><b>Analyze:</b> Hostname</dt>
+		<dd>
+			<p>The hostname is the part of a URL referring to the computer which stores the data. For example, the URL "http://www.xav.com/index.html" has hostname "www.xav.com".</p>
+		</dd>
+
+		<dt><b>Analyze:</b> URL</dt>
+		<dd>
+			<p>The Uniform Resource Locator of the web page.  Examples of URL's are "http://www.xav.com/index.html", "ftp://brooks.af.mil/etc/passwd", and "file://e:/resume.html".</p>
+		</dd>
+
+		<dt><b>Analyze:</b> Document Text</dt>
+		<dd>
+			<p>The raw HTML text of the page will be indexed. Comparisons are made in a case insensitive, substring manner, so substring "Hi" will match "shin", "HI", and "hi".</p>
+		</dd>
+
+	</dl>
+
+	<p><b>Example - Bob</b></p>
+
+	<p>Let's say Bob wants to index his own website (xav.com) and his mom's website (foo.net). He also wants other people's pages to be in his index, but only if they link to him.  His mom's website is lame and she's very self-conscious about her traffic levels, and so he wants to promote her site. Bob creates the following rules:</p>
+
+	<ul>
+		<li>Rule "My Pages" always allows pages whose hostname contains at least one of "xav.com" or "foo.net".</li>
+		<li>Rule "Link 2 Me" denies pages whose Document Text does not contain at least one of "http://www.xav.com"</li>
+		<li>Rule "Promote Mom" promotes - by a factor of 5x - pages whose hostname contains at least one of "foo.net".</li>
+	</ul>
+
+	<p>Under this system, all pages on xav.com and foo.net are automatically added.  Any other pages are added only if their HTML text contains the substring "http://www.xav.com".  In most cases, this will be people who link to xav.com one way or another, and this is sufficient for Bob's needs.</p>
+
+	<p>After all the indexing is said and done, visitors to Bob's site began to do searches. If any page from foo.net comes up in a search, its relevance - which controls how close it is to the top of the search results - is multiplied by 5.</p>
+

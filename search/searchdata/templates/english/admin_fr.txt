@@ -1,0 +1,89 @@
+<p><b>Using Rules to Manage Content</b></p>
+<p>There are many web pages out there, and not all are useful or appropriate to your target audience. Rules-based administration helps control the quality of information in your index file.</p>
+<p>The Fluid Dynamics Search Engine provides the following tools to manage content:</p>
+<ol>
+	<li><p>You may forbid your anonymous visitors from adding their own URL's. Most "garbage" submissions come from visitors.</p></li>
+	<li><p>If visitors are allowed to add, you can require that all their additions be approved by you first.</p></li>
+	<li><p>For all pages - submitted by visitors and administrators - you can search for certain strings in the hostname, URL, or document. Based on these searches, you can deny the document, allow it, or save it for administrator review and approval later. See the Filter Rules section.</p></li>
+	<li><p>You can parse the pages for tags that describe their level of adult-oriented content, and take action based on the level found. See the PICS section.</p></li>
+</ol>
+<p><br /></p>
+<p><b>General Settings</b></p>
+<blockquote>
+	<table border="0">
+	<tr>
+		<td><input type="hidden" name="allowanonadd_udav" value="0" /><input type="checkbox" name="allowanonadd" value="1" id="i1" /></td>
+		<td><label for="i1">Allow visitors to add web pages to the index (must have at least one Open Realm)</label> [<a href="%help_file%1072.html" target="_blank">Help</a>]</td>
+	</tr>
+	<tr>
+		<td><input type="radio" name="require anon approval" value="1" id="i2" /></td>
+		<td><label for="i2">Require administrator approval of every visitor-added web page.</label></td>
+	</tr>
+	<tr>
+		<td><input type="radio" name="require anon approval" value="0" id="i3" /></td>
+		<td><label for="i3">Require administrator approval only of those pages singled out by "Require Approval" Filter Rules (defined below).</label></td>
+	</tr>
+	<tr>
+		<td><input type="hidden" name="allowanonadd: notify admin_udav" value="0" /><input type="checkbox" name="allowanonadd: notify admin" value="1" id="i4" /></td>
+		<td><label for="i4">Send email to administrator whenever someone adds a URL (must supply email settings on Personal Settings page)</label></td>
+	</tr>
+	<tr>
+		<td><input type="hidden" name="allowanonadd: require user email_udav" value="0" /><input type="checkbox" name="allowanonadd: require user email" value="1" id="i5" /></td>
+		<td><label for="i5">Require that users include a valid email address when submitting a new URL.</label></td>
+	</tr>
+	<tr>
+		<td><input type="hidden" name="allowanonadd: log_udav" value="0" /><input type="checkbox" name="allowanonadd: log" value="1" id="i6" /></td>
+		<td><label for="i6">Save a copy of all visitor-added web pages (and visitor email addresses) to submissions.csv</label></td>
+	</tr>
+	<tr>
+		<td><input type="radio" name="allowanonadd: use rate" value="0" id="i7" /></td>
+		<td><label for="i7">Accept all submissions.</label></td>
+	</tr>
+	<tr>
+		<td><input type="radio" name="allowanonadd: use rate" value="1" id="i8" /></td>
+		<td>%HTML_BLOCK_4%</td>
+	</tr>
+	<tr>
+		<td><input type="hidden" name="_virtual_aaa_ufs_udav" value="0" /><input type="checkbox" name="_virtual_aaa_ufs" value="1" id="i9" /></td>
+		<td><label for="i9">Use form-signature algorithm to help prevent automated submissions.</label> [<a href="%help_file%1194.html" target="_blank">Help</a>]</td>
+	</tr>
+	</table>
+	<p><input type="submit" class="submit" value="Save Data" /></p>
+</blockquote>
+<p><br /></p>
+<p><b>Filter Rules</b> - <a href="%admin_url%&amp;Action=FilterRules&amp;subaction=create_edit_rule">Create New Rule</a></p>
+<table border="1" cellpadding="4" cellspacing="1">
+<tr>
+	<th align="left" colspan="2">Enable / Name</th>
+	<th colspan="2">Actions</th>
+	<th>Action</th>
+	<th>Scope</th>
+</tr>
+%HTML_BLOCK_1%
+</table>
+<blockquote>
+	<p><input type="submit" class="submit" value="Save Data" /></p>
+</blockquote>
+<p><br /></p>
+<p><b>Filtering based on the Platform for Internet Content Selection (PICS)</b></p>
+<p>Looking for PICS tags is a helpful tool in filtering out adult content, because many adult sites have voluntarily tagged their content. It is not foolproof, since spammers can easily remove their PICS tags to be allowed in.</p>
+<p>There are many PICS-related options. Use a checkbox to enable one of the implementations, and the options will be displayed.</p>
+<p><input type="checkbox" name="pics_rasci_enable" value="1" /> <b>Internet Content Rating Association (RASCi)</b> implementation (use checkbox to enable/disable)</p>
+<blockquote>%HTML_BLOCK_2%<br /></blockquote>
+<p><input type="checkbox" name="pics_ss_enable" value="1" /> <b>Safe Surf</b> implementation (use checkbox to enable/disable)</p>
+<blockquote>%HTML_BLOCK_3%<br /></blockquote>
+<blockquote>
+	<p><input type="submit" class="submit" value="Save Data" /></p>
+</blockquote>
+<p><br /></p>
+<p>Fluid Dynamics has no affiliation with the W3, RASCI, or SafeSurf.com. More information is available on their sites:</p>
+<ul>
+	<li><a href="http://www.w3.org/PICS/" target="_top">Platform for Internet Content Selection</a> (PICS)</li>
+	<li><a href="http://www.icra.org/" target="_top">Internet Content Rating Association</a> (RASCi)</li>
+	<li><a href="http://www.safesurf.com/" target="_top">SafeSurf.com</a></li>
+</ul>
+<p>The text descriptions for each filtering level were taken from the respective websites in October, 2000.</p>
+
+<p><br /></p>
+<p><b>URL Rewrite Rules</b> - <a href="%admin_url%&amp;Action=Rewrite">Edit</a></p>
+

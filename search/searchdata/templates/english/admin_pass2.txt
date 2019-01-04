@@ -1,0 +1,18 @@
+<p>You need to create an administrative password.</p>
+<p>This search engine is managed from web pages. A strong password prevents others from accessing these administrative pages.</p>
+<p>You are allowed to make up your password. There aren't any fixed rules about what it can be, but it should be difficult for others to guess. Your password will be Case Sensitive.</p>
+<p>Enter the same password twice, then submit the form.</p>
+<blockquote>
+	<table border="0">
+		<tr>
+			<td><b>Password:</b></td>
+			<td><input type="password" name="new_pass_1" /></td>
+		</tr><tr>
+			<td><b>Password:</b></td>
+			<td><input type="password" name="new_pass_2" /></td>
+		</tr><tr>
+			<td><br /></td>
+			<td><input type="submit" class="submit" value="Create Password" /></td>
+		</tr>
+	</table>
+</blockquote>

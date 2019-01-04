@@ -1,0 +1,7 @@
+<p style="text-align:center">
+	<a href="%search_url_ex%Mode=Tips">Search Tips</a>
+	-
+	<a href="%search_url_ex%Mode=AnonAdd">Add New URL</a>
+	-
+	<a href="/">Main Page</a>
+</p>

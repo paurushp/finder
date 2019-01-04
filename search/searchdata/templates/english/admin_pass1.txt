@@ -1,0 +1,14 @@
+<p>Welcome to your search engine's admin page.</p>
+<p>You'll need your password to access this page. Type your password in, then click the submit button:</p>
+<blockquote>
+	<table border="0">
+		<tr>
+			<td><b>Password:</b></td>
+			<td><input type="password" name="Password" value="%pass_value%" /></td>
+		</tr><tr>
+			<td><br /></td>
+			<td><input type="submit" class="submit" value="Login" /></td>
+		</tr>
+	</table>
+</blockquote>
+%html_status_msg%

@@ -1,0 +1,2259 @@
+
+Extracted function comments
+Mon Aug 22 00:40:04 2005
+
+
+
+=item AdminVersion
+
+
+
+=cut
+
+
+=item Append
+
+
+
+=cut
+
+
+=item Assert
+
+Usage:
+	##&Assert( conditional expression );
+
+Assert is a useful debugging tool.  Its one argument is a conditional that should be true in every possible case, as long as you've written your code correctly.  If the argument turns out to be false at runtime, then Assert will print an error message in very large, bold letters.  Often used to audit function input and output values.  Possibly these Assert calls should be stripped or disabled in public releases.
+
+=cut
+
+
+=item Authenticate
+
+
+
+=cut
+
+
+=item BuildIndex
+
+Usage:
+	&BuildIndex();
+
+BuildIndex completely rebuilds the index for a local realm. Because the webpages in local realms are readily accessible, this function tends to process huge data sets quickly. It is self-restartable through a meta-refresh; state information is stored in the $start_pos parameter and working data is stored either in the database or the index_file.working_copy file.
+
+For file-based indexes, all new data is written to index_file.working_copy. When the process is finished, possibly after several browser requests, the original index_file is deleted and index_file.working_copy is renamed over the top of it. Thus, users are able to perform searches on the intact index_file while the BuildIndex process in progress. In addition, it is possible to safely abandon the BuildIndex process.
+
+For SQL-based indexes, we don't have that concept of a temporary storage area. Instead, each record is updated as the webpage is encountered. At the end of the BuildIndex process, if we get there, we delete all records whose lastindex time is older than "start_time". The only records older than "start_time" are those that were not detected by GetFilesByDirEx, or that were excluded for other reasons.
+
+This is an interactive function; errors and other status messages are shown to the user by printing HTML.
+
+=cut
+
+
+=item Cancel
+
+
+
+=cut
+
+
+=item Capitalize
+
+Usage:
+
+	my $cap_string = &Capitalize($string);
+
+Capitalizes English-language strings.
+
+=cut
+
+
+=item CheckEmail
+
+Usage:
+	my $err = &CheckEmail( $address );
+	if ($err) {
+		print "<P><B>Error:</B> $err.</P>\n";
+		}
+
+Checks whether the argument is a valid email address or not:
+	address not blank
+	contains text @ text
+	text follow @ is valid hostname (can be resolved)
+
+Based on Ian Dobson's CheckEmail function.
+
+=cut
+
+
+=item Close
+
+
+
+=cut
+
+
+=item CompressStrip
+
+Process the HTML text and various subfields like Title and Description.
+
+=cut
+
+
+=item Crawler_new
+
+Usage
+
+	my %response = $crawler->webrequest(
+		'page' => 'http://www.xav.com/scripts/',
+		'limit' => 'http://www.xav.com/',
+		);
+
+	if ($response{'err'}) {
+		print "<P><B>Error:</B> $response{'err'}</P>\n";
+		exit;
+		}
+
+	print "The HTML text of this web page is:\n\n";
+	print $response{'text'};
+
+=cut
+
+
+=item DeleteFromPending
+
+Usage:
+	my ($err, $delcount) = &DeleteFromPending( $realm, \@urls );
+
+=cut
+
+
+=item FD_Rules_new
+
+Initializes the object that manages system settings.
+
+=cut
+
+
+=item FlockEx
+
+Usage:
+	if (&FlockEx( $p_filehandle, 8 )) {
+		# okay
+		}
+
+Abstraction layer to protect non-flock systems.
+
+=cut
+
+
+=item FormatDateTime
+
+
+
+=cut
+
+
+=item FormatNumber
+
+Usage:
+	my $num_str = &FormatNumber( $expression, $decimal_places, $include_leading_digit, $use_parens_for_negative, $group_digits, $euro_style );
+
+Arguments
+
+$expression
+	Required. Expression to be formatted.
+
+$decimal_places
+	Optional. Numeric value indicating how many places to the right of the decimal are displayed.
+	Note: truncates $expression to $decimal_places, does not round.
+
+$include_leading_digit
+	Optional. Boolean that indicates whether or not a leading zero is displayed for fractional values.
+
+$use_parens_for_negative
+	Optional. Boolean that indicates whether or not to place negative values within parentheses.
+	Style is used for outbound formatting only; inbound parsing always uses "-" for dec (Perl's internal format)
+
+$group_digits
+	Optional. Boolean that indicates whether or not numbers are grouped using the comma.
+
+$euro_style
+	Optional. If 1, then "." separates thousands and "," separates decimal.  i.e. "800.234,24" instead of "800,234.24".
+	Style is used for outbound formatting only; inbound parsing always uses "." for dec (Perl's internal format)
+
+Prototyped to match Microsoft's FormatNumber function for vbscript/jscript, with the limitation of not knowing about default settings.
+
+Microsoft specification at http://msdn.microsoft.com/scripting/vbscript/doc/vsfctFormatNumber.htm or from http://msdn.microsoft.com/scripting/.
+
+Error handling:
+	if $expression is not numeric, is treated as 0
+
+=cut
+
+
+=item GetCrawlList
+
+Usage:
+	my @list = ();
+	my $count = 0;
+
+	my $age = $::FORM{'StartTime'};
+	if ($::FORM{'DaysPast'}) {
+		$age -= (86400 * $::FORM{'DaysPast'});
+		}
+
+	my $err = &GetCrawlList( $realm, $age, $max_list_size, \@list, \$count );
+
+Retrieves a @list of all web pages in the '$realm' realm that are older than $age.
+
+$count is the size that @list would be if no limits were imposed.
+
+@list will actually contain between 0 to $max_list_size elements. The max_list_size option is available to save memory.
+
+=cut
+
+
+=item GetFiles_new
+
+Used to enumerated all files and folders in a certain directory.  Designed to use very little memory.
+
+Files are always returned in alphabetic order, which allows certain optimizations to be made.
+
+Usage:
+
+	my $fr = &fdse_filter_rules_new();
+
+	my $gf = &GetFiles_new();
+
+	$err = $gf->create_file_list(
+		'base_dir' => $base_dir,
+		'base_url' => $base_url,
+		'fr'       => \$fr,
+		'tempfile' => "$file.temp",
+		'no_older_than' => $num_seconds,
+		);
+
+	my $count = $gf->{'count'};
+	$gf->resume_file_position( $start_pos );
+
+	while (1) {
+		my ($lastmodt, $size, $fullfile, $basefile, $url) = $gf->get_next_file();
+		}
+
+	$gf->quit(); # kills temp file
+
+
+no_older_than is the number of seconds for the maximum tolerable age of the cache file.  If the file exists and is older than this, then a new file will be created.
+
+=cut
+
+
+=item LoadRules
+
+Usage:
+	$err = &LoadRules();
+
+Wrapper around FD_Rules object and it's own loadrules() method.  Adds additional processing.
+
+Writes directly to the global %::Rules hash.  Writes some derived data to %::const as well.
+
+=cut
+
+
+=item LockFile_get_read_access
+
+Gets read access to the file.
+
+Handles the "create_if_needed" logic.
+
+Tries to restore a stale "working_copy" file if not copy of the original file exists.
+
+=cut
+
+
+=item LockFile_new
+
+This package provides an object-oriented approach to file I/O, with support for file locking and standardized error handling.
+
+Usage:
+
+	my ($err, $obj, $p_rhandle, $p_whandle) = ();
+
+	Err: {
+		$obj = &LockFile_new(
+			'create_if_needed' => 1,
+			);
+
+		($err, $p_rhandle) = $obj->Read( $file );
+		next Err if ($err);
+
+		while ($_ = readline($$p_rhandle)) {
+			print $_;
+			}
+
+		$err = $obj->Close();
+		next Err if ($err);
+
+		last Err;
+		}
+	continue {
+		print "<P><B>Error:</B> $err.</P>\n";
+		}
+
+=cut
+
+
+=item Merge
+
+
+
+=cut
+
+
+=item ParseRobotFile
+
+Usage:
+	my @forbidden_paths = &ParseRobotFile( $RobotText, $my_user_agent );
+
+Accepts the text of a robots.txt file, and the string name of the current HTTP user-agent. Parses through the file and returns an array of all forbidden paths that apply to the current user-agent.
+
+=cut
+
+
+=item PrintOrderedHash
+
+Usage:
+	my $err = &PrintOrderedHash( \%hash, $by_value, $ascii_sort, $ascending, $date_map );
+
+=cut
+
+
+=item PrintTemplate
+
+Usage:
+	&PrintTemplate( $b_return_as_string, 'tips.html', 'german', \%replace_values, \%visited, \%cache );
+
+See "admin_help.html" for extensive documentation on this function, its limitations, its failure scenarios, etc.
+
+=cut
+
+
+=item RawTranslate
+
+Usage:
+
+	my $lc_ai_string = &RawTranslate($string);
+
+Returns a lowercase, accent-stripped version on its input.  Replaces HTML-encoded characters with their ASCII equivalents.
+
+This function is called mainly by &CompressStrip; also by &LoadRules when preparing the code for ignore words.
+
+See http://www.utoronto.ca/webdocs/HTMLdocs/NewHTML/iso_table.html
+
+=cut
+
+
+=item Read
+
+
+
+=cut
+
+
+=item ReadFile
+
+Usage:
+
+	my ($err, $text) = &ReadFile($file);
+	if ($err) {
+		print "<P><B>Error:</B> $err</P>";
+		}
+	else {
+		print "<P>File '$file' contains:</P>";
+		print "<P>$text</P>";
+		}
+
+Easy-to-call file-reading function.
+
+Calls super-robust LockFile object under the hood, which is a relatively expensive call.  This is done for operations which read data from the file system into memory, and then save data back to the file system.  For these operations, we cannot afford to have a single failed read operations cause permanent data loss.  Examples of read failures would be "file locked for writing by another process".
+
+=cut
+
+
+=item ReadFileL
+
+Usage:
+	($err, $text) = &ReadFileL( $filename );
+
+Returns the text of the given file, or an error.  Uses direct disk I/O rather than the more expensive LockFile package.
+
+=cut
+
+
+=item ReadInput
+
+Reads CGI form input, or command-line parameters.  Initializes %$p_FORM and assigns values.
+
+Usage:
+	&ReadInput();
+
+Abstracts the source of the commands (can be query string, standard input, or command-line parameters).
+
+Automatically updates global hash %::FORM.
+
+=cut
+
+
+=item ReadWrite
+
+
+
+=cut
+
+
+=item Resume
+
+
+
+=cut
+
+
+=item SaveLinksToFileEx
+
+Usage:
+	my $err = &SaveLinksToFileEx(
+		$p_realm_data,
+		$ref_crawler_results,
+		$ref_spidered_links,
+
+		$ref_links_new,
+		$ref_links_visited_fresh,
+		$ref_links_visited_old,
+		$ref_links_error,
+		);
+	if ($err) {
+		print "<P><B>Error:</B> $err.</P>\n";
+		}
+
+Saves all links from this crawl sessions to the pending pages file (search.pending.txt).
+
+File format is:
+	URL &ue(realm) number
+
+where number is one of:
+	0 => waiting to be indexed
+	2 => encountered problems during index
+	2+ => epoch time of the index operation
+
+=cut
+
+
+=item SearchIndexFile
+
+Usage:
+	&SearchIndexFile( $index_file, $search_code, \$pages_searched, \@HITS );
+
+Searches the given index file.  Uses by-reference return values for the total pages searched and the array of hits.
+
+=cut
+
+
+=item SearchRunTime
+
+Usage:
+	&SearchRunTime( $realm, $DocSearch, \$pages_searched, \@HITS );
+
+=cut
+
+
+=item SelectAdEx
+
+Usage:
+	my @Ads = &SelectAdEx();
+
+Returns the text for up to 4 ads.  If keywords present in $::private{'search_term_patterns'} then the ads will be keywords-based.
+
+=cut
+
+
+=item SendMailEx
+
+Specification
+
+Lightweight, portable, Perl library for sending mail in a reliable fashion.
+
+Designed for the occassional message, not for being a massive 24x7 mailer.
+
+Requirements:
+
+	absolutely zero dependencies; no external Perl modules, etc.
+	clean: use strict, -w, -W, -T, prototypes ok
+	callable as a single standalone function, not a package. use byref hash to optionally preserve state between calls
+
+	must be able to send mail w/ raw sockets for those hosts without command-line sendmail (NT)
+	must be able to send mail w/ command-line sendmail for those hosts without sockets privileges on port 25 (free webhosts)
+	allow caller to specify buffered/unbuffered I/O (sysread vs read, syswrite vs print)
+
+	must be very safe with user data - try really hard not to lose messages (retry, option to save to disk on socket failure, etc.)
+	able to send mail multiple ways - sockets, |sendmail, or save-to-file
+	must comply with "run 4ever" goal - don't overflow file system with saved messages, etc.
+
+	allow verbose/debug mode which traces all socket traffic
+	when possible, should auto-detect necessary SMTP servers - currently uses `nslookup`
+
+	use extracted strings array for error messages. allow caller to import a translated set.
+	do not write to STDOUT; do your work and return error status; let calling code deal with the user
+
+
+Internal Structure:
+
+	Network Client Cache - %nc_cache - $p_nc_cache
+
+	hash (or reference to) with:
+
+		values:
+		V:loaded = 1 or undef depending on whether these values have been queried:
+				$$p_nc_cache{'V:PF_INET'} =   PF_INET();
+				$$p_nc_cache{'V:SOCK_STREAM'} = SOCK_STREAM();
+				$$p_nc_cache{'V:PROTO'}    = scalar getprotobyname('tcp');
+
+		hostnames: (all hostnames converted to lowercase)
+		H:foo.bar.com => 4-byte IP address or undef()
+
+
+Usage:
+
+	my $message = <<"EOM";
+
+Hi there Bob!
+
+How has life been treating you?
+
+Regards,
+Joe
+
+EOM
+
+	my ($err, $trace) = &SendMailEx(
+		'to'     => 'user@host.com',
+		'to name'  => 'Bob User',   # *
+		'from'    => 'me@host.com',
+		'from name' => 'Sally User',  # *
+		'subject'  => 'Hi Sally',   # *
+		'message'  => $message,
+		'host'    => 'mail.foo.com', # *
+		'port'    => 25,       # *
+		'saveto'   => 'e:/saved_msgs',
+		'max_saved_messages' => 1000,
+		'handler_order' => '12345',
+		'always_save' => 1,
+		);
+	# * optional field
+
+	if ($err) {
+		print "<P><B>Error:</B> $err.</P>\n";
+		}
+	else {
+		print "<P><B>Success:</B> sent mail okay.</P>\n";
+		}
+
+	print "<P>Here is the trace:</P>\n\n";
+	print "<XMP>\n$trace\n</XMP>\n";
+
+
+SendMailEx knows of 2 ways to handle a message:
+
+	1. pipe the message to a process, such as /usr/sbin/sendmail or c:/blat.exe, defined with the 'pipeto' parameter
+		If using /usr/sbin/sendmail, include the "-t" flag in the pipeto input, i.e.:
+		'pipeto' => '/usr/sbin/sendmail -t',
+	2. deliver to a known SMTP server, defined using the 'host' paramater
+
+The options are listed above in the order of speed and reliability. Saving the message to a folder is generally just a failover method to prevent the loss of user data - no message will actually be sent.
+
+By default, SendMailEx will attempt those methods in order. You can override this with the 'handler_order' parameter, which is a string like "12345" or "54321" or "23". If parameters 'pipeto', 'host', or 'saveto' aren't defined, this process will skip the handling methods which depend on them.
+
+=cut
+
+
+=item SetDefaults
+
+Usage:
+	my $text = &SetDefaults( $html, \%params );
+
+Takes $html, which is an HTML fragment including FORM elements, and sets all default attributes to match %params.
+
+Requires strict format:
+
+	<INPUT TYPE=radio NAME="name" VALUE="value">
+	<INPUT TYPE=checkbox NAME="name" VALUE="value">
+	<INPUT NAME="foo">
+	<SELECT NAME="name".*?><OPTION VALUE="value"><OPTION VALUE="value"></SELECT>
+	<INPUT TYPE=hidden NAME="name">
+	<TEXTAREA NAME="foo">value</TEXTAREA>
+
+Generally will accept double-quoted attributes, or unquoted attributes which don't contain any embedded space.
+
+In the case of replacing "hidden"-type fields, will only insert new values for hidden form elements that do not already have a value.  For example, the tag:
+
+	<input type="hidden" name="foo" />
+
+will receive an automatic value="" attribute, but the tag:
+
+	<input type="hidden" name="foo" value="bar" />
+
+will not be touched, since there is already an explicit value="" attribute.
+
+This code will insert checked="checked" and selected="selected" attributes for the appropriate form elements.  It will overwrite existing checked/selected attributes.
+
+The code will overwrite default value="x" values for INPUT TEXT and INPUT PASSWORD and TEXTAREA.
+
+changed 2002-05-16
+	now case-preserving on INPUT|SELECT|TEXTAREA tags
+	attempting to be more XHTML compliant with output
+
+changed 2005-07-07
+	inserting leading line break before value in <textarea>, so we have <textarea>\r\nvalue</textarea> not <textarea>value</textarea>
+note that this will cause corruption in Opera, v7 + v8.01, because Opera does not ignore the leading \r\n, and so each time the textarea is edited, a new newline will appear at the top.  A bug has been logged against Opera for this:
+http://my.opera.com/forums/showthread.php?threadid=94823&highlight=textarea
+bug 173282
+
+
+TODO / BUG: this code doesn't properly handle <select> lists with multiple values
+
+=cut
+
+
+=item StandardVersion
+
+The following three functions return the HTML text for printing a single hit.  &StandardVersion() returns the normal text, &AdminVersion() returns the same text as StandardVersion with the addition of "Edit" and "Delete" buttons as well as re-routing all links through the redirector
+
+Usage:
+	my $textoutput = &StandardVersion(%pagedata);
+
+=cut
+
+
+=item Suspend
+
+Used for ReadWrite activity that spans multiple object lives.  Two relevant methods, Suspend and Resume.
+
+Suspend saves the read/write depth of the related files to the $filename.exclusive_lock_request file.
+
+Resume opens the files as would ReadWrite (does oppositive checks - the .elr and .tmp must exist).  It seeks to the appropriate places in the files before handing the handles back.
+
+=cut
+
+
+=item Trim
+
+Usage:
+
+	my $word = &Trim("  word  \t\n");
+
+Strips whitespace and line breaks from the beginning and end of the argument.
+
+=cut
+
+
+=item UpdateIndex
+
+For local realms. Update procedure used to update all records.
+
+Usage:
+	($err, $is_complete) = &UpdateIndex( $p_realm_data );
+
+Algorithm:
+
+	(Must all be done in a single process... not restartable...)
+
+	Use GetFiles() to create a list of all files and their lastmod times
+	Build a hash of $lastmod{url} = time
+
+	loop through all records in the existing index
+
+		unless lastmod(url)
+			delete record
+			next
+
+		delete lastmod(url)
+
+		if (lastmod(url) == lastmod_index
+			preserve record
+		else
+			(file = url) =~ s!^base_url!base_dir!o;
+			record = build_new_record(file)
+			update record
+		}
+	foreach (keys %lastmod)
+		(file = url) =~ s!^base_url!base_dir!o;
+		record = build_new_record(file)
+		insert record
+
+=cut
+
+
+=item WriteFile
+
+Usage:
+	$err = &WriteFile( $file, $text );
+
+This is a wrapper around the LockFile object and it's ReadWrite method.  Useful for writing small text files where the entire file contents can be stored in memory ($text).
+
+=cut
+
+
+=item WriteRule
+
+Attempts to save the name-value pair to the Rules hash.
+
+If the $name-$value pair being assigned is already the current setting in %::Rules, then this function will short-circuit and return a success result.
+
+Usage:
+	$err = &WriteRule( $name, $value );
+	if ($err) {
+		print "<P><B>Error:</B> $err.</P>\n";
+		}
+
+=cut
+
+
+=item _fdr_validate
+
+Usage:
+
+	my $FDR = &FD_Rules_new();
+
+	my ($is_valid, $valid_value) = $FDR->_fdr_validate($name, $value);
+
+Returns Boolean whether the rule is valid, according to the internal %defaults array. Note that $name's which are not defined in %defaults will always return as valid, with $valid_value = $value.
+
+For Boolean data types, a $value which is undefined or a null string will return $is_valid = 1 with $valid_value = 0.
+
+Returns $valid_value as either argument $value, or the onboard default.
+
+=cut
+
+
+=item _handle_folder
+
+Recursively-called function for gathering all the files in a folder which need to be indexed.
+
+=cut
+
+
+=item _load_filter_rules
+
+
+
+=cut
+
+
+=item add
+
+This method will check for the existence of index files; if they don't exist, it will attempt to create a zero-byte file.  If the creation fails, it will not load the realm.
+
+=cut
+
+
+=item add_filter_rule
+
+Usage:
+	$err = $fr->add_filter_rule();
+
+=cut
+
+
+=item admin_link
+
+Usage:
+	my $link = &admin_link(
+		'Action' => 'Foo',
+		'Name' => 'Value,
+		);
+
+Returns an admin URL with the passed name-value parameters. Will URL-encode the names and values.
+
+=cut
+
+
+=item admin_main
+
+Usage:
+	$err = &admin_main();
+
+=cut
+
+
+=item anonadd_main
+
+Function controlling visitor submissions of URL's.
+
+=cut
+
+
+=item basetime
+
+
+
+=cut
+
+
+=item build_plural_pattern
+
+Usage:
+
+	$term = &build_plural_pattern( $term );
+
+Returns a Perl regular expression which will match all common plural forms of $term.
+
+If $term is a phrase (i.e., contains embedded spaces), then each word in $term will be converted to the appropriate pattern.
+
+Thanks to http://owl.english.purdue.edu/handouts/grammar/g_spelnoun.html
+
+my %tests = (
+	'dog' => 'dogs?',
+	'dogs' => 'dogs?(es)?',
+	'potato' => 'potato(es|s)?',
+	'potatoes' => 'potato(|e|is|es)',
+	'potatos' => 'potatos?(es)?',
+	'school' => 'schools?',
+	'church' => 'church(es)?',
+	'zoo' => 'zoos?',
+	'fox' => 'fox(es)?',
+	'foxes' => 'fox(|e|is|es)',
+	'guess' => 'guess?(es)?',
+	"\\ family \\" => "\\ famil(ies|y) \\",
+	'family' => 'famil(ies|y)',
+	'family of dogs' => 'famil(ies|y) ofs? dogs?(es)?',
+	'family of dog' => 'famil(ies|y) ofs? dogs?',
+	);
+
+my ($in, $out);
+while (($in, $out) = each %tests) {
+	my $test_out = &build_plural_pattern( $in );
+	if ($test_out eq $out) {
+		print "test '$in' to '$out' ok\n";
+		}
+	else {
+		die "error - '$in' converted to '$test_out' but expected '$out'";
+		}
+	}
+
+=cut
+
+
+=item check_filter_rules
+
+TODO: document the p:, p:m:, and _udav namespaces
+
+Note: all regex passed to this subroutine are already guaranteed valid by the &validate() routine called earlier by the object.  Thus no error checking is done on regex.
+
+Usage:
+
+	my $url_to_get = 'http://www.xav.com/';
+	my $document_text = '';
+
+	my $fr = &fdse_filter_rules_new();
+
+	my ($is_denied, $requires_approval, $promote_val, $filter_err, $no_update_on_redirect, $b_index_nofollow, $b_follow_noindex) = ();
+
+	($is_denied, $requires_approval, $promote_val, $filter_err, $no_update_on_redirect, $b_index_nofollow, $b_follow_noindex) = $fr->check_filter_rules( $url_to_get, '', 1);
+
+	if ($is_denied) {
+		print "<P>URL '$url_to_get' is denied - $filter_err</P>";
+		exit;
+		}
+
+	$document_text = get( $url_to_get );
+
+	($is_denied, $requires_approval, $promote_val, $filter_err, $no_update_on_redirect, $b_index_nofollow, $b_follow_noindex) = $fr->check_filter_rules( $url_to_get, $document_text, 0);
+
+	if ($is_denied) {
+		print "<P>URL '$url_to_get' is denied - $filter_err</P>";
+		exit;
+		}
+
+	if ($requires_approval) {
+		#queue
+		}
+	else {
+		# add to index
+		}
+
+=cut
+
+
+=item check_parse_patterns
+
+Usage:
+	&check_parse_patterns( $text, \%metadata );
+
+=cut
+
+
+=item check_regex
+
+Usage:
+	$err = &check_regex($pattern);
+
+Checks against ?{} code-executing expressions.
+
+Uses an eval wrapper to confirm that the expression is valid.
+
+=cut
+
+
+=item check_rule
+
+
+
+=cut
+
+
+=item choose_interface_lang
+
+Usage:
+	($err, $options_string, $lang) = &choose_interface_lang(
+		$b_is_admin_rq,
+		&query_env('HTTP_ACCEPT_LANGUAGE'),
+		);
+	next Err if ($err);
+
+This subroutine provides the logic for selecting which language to use, based on the various user settings (via the function arguments) and the system settings (via the global %::Rules hash).
+
+Return value is $options_string as a chain of <option> tags for all valid languages, and $lang for the selected language.
+
+=cut
+
+
+=item clear_error_cache
+
+Usage:
+	($err, $error_lines) = &clear_error_cache();
+
+Attempts to remove all cached error pages from file "search.pending.txt".  Return $err on failure, and integer $error_lines on success.
+
+=cut
+
+
+=item compress_hash
+
+Usage:
+	&compress_hash( \%pagedata );
+
+This function is solely responsible for initiating any time fields that haven't been set yet.  Time fields are: lastindex, lastmodtime, dd, yyyy, mm
+
+=cut
+
+
+=item create_conversion_code
+
+Usage:
+	my $code = &create_conversion_code( $b_verbose );
+
+Creates a block of Perl code (for later use in eval()) which will:
+
+	1. convert HTML entities to the appropriate byte in the Latin-1 character set
+	2. converts characters based on the accent sensitivity and case sensitivity
+	     settings under Character Conversion
+	3. strips any remaining non-word characters
+
+When the $b_verbose flag is set, an HTML table will be printed which shows all characters, their word/non-word status, and the values that they will be converted to.
+
+=cut
+
+
+=item create_file_list
+
+
+
+=cut
+
+
+=item delete_filter_rule
+
+Deletes the filter rule '$name' from the internal array, and then saves the filter rules to disk.
+
+Usage:
+	my $err = $FR->delete_filter_rule( $name );
+	if ($err) {
+		print "<P><B>Error:</B> $err.</P>\n";
+		}
+
+=cut
+
+
+=item delete_index_file
+
+Usage:
+	&delete_index_file( $realm_file );
+
+Attempts to delete the index file and all associated files.  Prints error information to output.
+
+=cut
+
+
+=item entity_decode
+
+Usage:
+
+	$virtual_str = &entity_decode( $entity_candidate_str, $b_return_only_ch, $p_ilen );
+
+The entity_decode function returns $virtual_str which is the "entity-reduced" version of $entity_candidate_str.  $p_ilen is an optional by-reference return value which points to an integer that holds the number of leading characters in $entity_candidate_str that were converted as an entity.
+
+In 98% of cases, $$p_ilen will be either:
+
+	0 if $entity_candidate_str did not parse as an entity
+	or
+	length($entity_candidate_str) if it did parse as an entity
+
+In 2% of cases, it will be somewhere in between.  The in-between cases arise when $entity_candidate_str contains an ampersand followed by a set of word characters but not closing semicolon, like "&lt55".  This parses to "<55" and $$p_ilen would be set to 3.
+
+=cut
+
+
+=item fdse_filter_rules_new
+
+Usage:
+	my $FR = &fdse_filter_rules_new();
+
+Returns the object for managing Filter Rules.  Each filter rule is a hash of name-value pairs, include the p_strings => \@strings pair and the litstrings pair.  Lookup of filter rules is by name on the $FR hash itself, like $p_data = $FR->{'Admin Pages'}.  Any hash element in $FR which is a hash reference is treated as a filter rule.
+
+=cut
+
+
+=item fdse_realms_new
+
+Note that the SQL column "is_runtime" has been overloaded to mean "type".  Done so that ppl don't have to rebuild their databases as I add new realm types.  This'll be changed when I next break with reverse compat.
+
+=cut
+
+
+=item format_term_ex
+
+Usage:
+	my ($type, $is_attrib_search, $str_pattern, $sql_clause) = &format_term_ex($user_entered_term, $default_type);
+
+Returns:
+	$type of 0 == ignored, 1 == forbidden, 2 == optional, 3 == required
+
+	$is_attrib_search is 1 iff the term is like "title:foo" or "link:xav.com".
+
+	$str_pattern is the pattern to put against the Record to test for existence
+
+	$sql_clause is suitable for insertion in "SELECT * FROM $::Rules{'sql: table name: addresses'} WHERE ($sql_clause) AND ($sql_clause)"
+		examples: text LIKE '%foo%' or ut LIKE '%my phrase%'
+
+=cut
+
+
+=item freeh
+
+Free file handle.  Unlocks the handle with flock() and then closes.  Returns last error.
+
+=cut
+
+
+=item frwrite
+
+Saves the filter rules to their file.
+
+Usage:
+	$err = $FR->frwrite();
+	if ($err) {
+		print "<P><B>Error:</B> $err.</P>\n";
+		}
+
+=cut
+
+
+=item get_absolute_url
+
+
+
+=cut
+
+
+=item get_age_str
+
+Usage:
+	$age_str = &get_age_str( time() - $lastmodt );
+
+=cut
+
+
+=item get_command_out
+
+Usage:
+
+	($stdout, $stderr) = &get_command_out( $command, $b_verbose );
+
+Changed build 0064; now restoring STDERR filehandle after each call.
+
+=cut
+
+
+=item get_default_name
+
+Usage:
+	my ($defname, $deffile) = $::realms->get_default_name( $base_url );
+
+=cut
+
+
+=item get_defaults
+
+
+
+=cut
+
+
+=item get_file_type_icon_by_url
+
+Usage:
+
+	$image = &get_file_type_icon_by_url( $URL );
+
+Returns an image filename for an icon matching the assumed file type for $URL.  Returns a string "0" if no matching icon is known.
+
+=cut
+
+
+=item get_next_file
+
+
+
+=cut
+
+
+=item get_open_realm
+
+Usage:
+	my ($err, $p_realm_data) = $::realms->get_open_realm()
+	}
+
+Returns a realm object for the first open-style realm (type == 1). If no open realms are defined, will create one and return a pointer to it, or an error regarding the failure to create a realm.
+
+=cut
+
+
+=item get_remote_host
+
+Usage:
+	$hostname = &get_remote_host();
+
+This subroutine will attempt to lookup a resolved hostname from the REMOTE_HOST environment variable.  If none is found, or if it appears to be an IP address, then the $private{'visitor_ip_addr'} will be resolved to a hostname and returned.
+
+Uses global hash key $private{'remote_host'} as a hidden cache.
+
+=cut
+
+
+=item get_valid_langs
+
+This subroutine is resource intensive, and so it maintains a cache copy of valid languages within the %::Rules hash.  The format of the rule is:
+
+/search/searchdata/valid_languages_cache.txt
+
+"VERSION$cache-build-time$templates-time$short$long$short$long$short$long"
+
+where
+
+VERSION is the version of FDSE when the cache was made.  The cache will be cleared whenever the version of the actual script calling this subroutine is changed
+
+"time" is the stat(9) lastmodt of the folder /search/searchdata/templates/.  This time is checked with each execution and the cache will be reset if they mismatch
+
+long.short, long.short are sets of pairs like "en.English", "it.Italian", and so on.  They can be used to create a drop-down select list.  The delimiter $ must never appear within a string; there is no escape sequence.
+
+Note also that the cache will be reset if a user clicks the "install/update" link from Admin Page => User Interface => Languages to update any of the lang packages.
+
+The cache will be reset every 24 hours.
+
+
+The benefit of this cache-hash is that if a user arrives with HTTP_ACCEPT_LANGUAGE = "xx" and if the script is set to respond to browser language, then it will need to check whether "xx" is a language package that is installed, and it will need to check if "/xx/strings.txt" is a valid version.  This will cause a lot of churn on systems that run in just one or two languages, but are frequently visited by users with a different language.
+
+In addition, for the user-defined language, the administrator will want to put a dynamic drop-down form into his templates which contain the set of supported languages.  This dynamic list should auto-update when new language packages are installed.  The base cost of supporting a dynamic list is that on each execution, FDSE needs to scan /templates/ for all possible language packages, and it needs to validate their strings.txt for version information.  This is a lot of overhead for each execution for a feature that only 1% of webmasters will use and that users will only use 1% of the time when it is exposed.
+
+The cache system reduces this overhead, at the expense of the usual cached-data problems.
+
+=cut
+
+
+=item get_web_folder
+
+Usage:
+	my $url = &get_web_folder($url);
+
+Takes a URL and reduces it to the folder descriptor:
+
+http://www.xav.com => http://www.xav.com/
+http://www.xav.com/~bob => http://www.xav.com/~bob/
+http://www.xav.com/~bob/index.html => http://www.xav.com/~bob/
+
+=cut
+
+
+=item get_website_realm
+
+Usage:
+	my ($err, $p_realm_data) = $::realms->get_website_realm( $url )
+
+Returns a realm object for the first website-style realm with base_url that matches to $url.
+
+If no such website-realms exist, it will try to create one. If it fails, an error message will be returned.
+
+=cut
+
+
+=item get_wname
+
+
+
+=cut
+
+
+=item handler_match
+
+Usage:
+
+	my ($p_sub, $read_from_back) = &handler_match( $URL, $content_type, $b_verbose );
+
+Returns a special-case handler subroutine if the resource described by $URL and $content_type is eligible for special treatment.
+
+The $p_sub is called as:
+
+	($err, $text) = &$p_sub( $binary_slice, $alt_file_path, $URL, $b_verbose );
+	next Err if ($err);
+
+=cut
+
+
+=item handlers_init
+
+Usage:
+
+	&handlers_init( $b_load_all, $b_verbose );
+
+This sub has no return values and no error handling.  It creates a global arrayref that holds configuration, matching, and parsing code for binary-to-HTML conversion.
+
+If $b_load_all, then all converters are loaded to the arrayref, even if they aren't enabled or lack valid config options.  This is used when firing up the admin page to display information on all possible converters.
+
+If $b_verbose, then a description of each converter will be printed when it is evaluated.
+
+The arrayref created by this sub is loaded as $private{'handlers'} = [].  Each array element corresponds to a binary converter, using a hashref with keys:
+
+
+	'name' human-readable string, for ID and debugging
+
+	'enabled' Boolean
+
+	'read_last_bytes' int | false
+
+		if non-zero int, the system will attempt to read in only the last X bytes of the file for passing to the converter routine.  This is used by the MP3 converter to select only the final 128 bytes where the ID3v1 metadata is to be found
+
+	'extension_pattern' regex for matching lowercase file extension of binary
+
+	'content_type_pattern' regex for matching lowercase Content-Type header of binary
+
+	'test_syntax' ref to a sub with template
+
+		$err = test_syntax()
+
+		sub should print verbose information about all tests, and return non-null err iff syntax failed
+
+	'converter' reference to a conversion sub with template:
+
+		my ($err, $text) = sub( $binary_slice, $alt_file_location, $URL, $b_verbose );
+
+
+The global arrayref $private{'handlers'} is used by &handlers_match() to decide whether a given file needs special parsing.
+
+By default, an inline MP3 converter is enabled.  PDF and MS Word converters are loaded automatically, and enabled if the system has pointers to their locations.
+
+=cut
+
+
+=item hashref
+
+Provides quick access to a hash containing all the information about a realm.
+
+Usage:
+	my ($err, $p_realm_data) = $::realms->hashref( 'foo' );
+	if ($err) {
+		print "<p><b>Error:</b> $err.</p>\n";
+		}
+
+=cut
+
+
+=item hd
+
+Usage:
+
+	@strings = &hd( @html_strings );
+
+Removes some HTML escapes from strings, specifically the quote, less-than, greater-than, and ampersand characters.
+
+=cut
+
+
+=item header_add
+
+Usage:
+
+	&header_add( "Set-Cookie: foo=bar; path=/" );
+
+Adds the header to the set of HTTP headers for this response.  They are stored in memory and are printed when &header_print() is called.
+
+For simplicity, use header_print( header1, header2 ) when you want to add headers at the same time you print them.  Use the stand-alone header_add when you are adding headers at a different place in the code from where you are printing them.
+
+=cut
+
+
+=item header_print
+
+Usage:
+
+	&header_print( header1, header2 );
+
+Prints the contents of the 'http_headers' element.  Sets a bit acknowledge that headers were printed; subsequent calls will not result in additional prints.  This allows &header_print() to appear at the top of routines that print output, and also at the top of the global error handling block, without any special handling.
+
+This function will handle whether the "HTTP/1.0 XXX" status line should be written, and what it should contain.
+
+mod_perl interoperability requires that all headers be printed together in a single 'print' statement, so use header_add/header_print instead of stand-alone print calls scattered throughout the code.
+
+The header "Content-Type: text/html" is default and will be added if no other specific Content-Type header is present.
+
+=cut
+
+
+=item highlighter_new
+
+The highlighter class contains three public functions and two private functions.
+
+$obj = &highlighter_new
+
+	Creates a new instance
+
+$obj->highlighter_scan( $html_string );
+
+	Reads in an HTML string
+
+$html_string = $obj->highlight( \@keywords, $type )
+
+	Returns the HTML string with highlighting of the @keywords
+
+	$type == 0 => all keywords highlighted using <b class="hl1">
+
+	$type == 1 => all keywords highlighted using <b class="hl2">
+
+	$type == 2 => all keywords highlighted using <span class="fdse_hi$s1"> where $s1 is the keyword priority index
+
+Internally, this class calls:
+
+	&RawTranslate
+
+=cut
+
+
+=item html_select_ex
+
+Usage:
+	($count, $html_hidden, $html_tr) = $::realms->html_select_ex();
+
+=cut
+
+
+=item leadpad
+
+Usage:
+	my $buffer = &leadpad( "foo", "0", 10 );
+	returns "0000000foo"
+
+=cut
+
+
+=item leansock
+
+Usage:
+	$err = &leansock($host,$port,\*GLOBFILE,$p_nc_cache);
+
+Attempts to create and connect an unbuffered socket to $host:$port, referenced by *GLOBFILE.
+
+Hash reference to %nc_cache holds socket values and cached DNS lookups.
+
+Does not call getservbyname() because protocol is not generally know. Expects explicit port; if you want to be psycho and ask an api for the port number, do so on your own before calling.
+
+During benchmarks on Win2000 2x550MHz, basic Perl loop w/ 10^4 iterations of simple string assignment executed in about 2.39 seconds. With 1 iteration, took 1.65 seconds. With a call to "use Socket" followed by 10^4 iterations, took 2.88 seconds. Suggests that basic Perl interpreter initialization cost of 1.65 seconds with additional 0.49 second when "use Socket" called (+33%). For systems where initial read from text data file is pre-requisite anyway, may pay off to keep a short-term cache of static return values for Socket functions.
+
+=cut
+
+
+=item length_limit
+
+Usage:
+
+	$short_string = &length_limit( $long_string, $length_limit );
+
+This sub truncates long strings right before the final space.  It is intended for truncating long strings of text, like in a sentence.  Making the truncation happen at a space prevents breaks inside words.
+
+A trailing "..." is added iff the string is truncated.
+
+=cut
+
+
+=item list_filter_rules
+
+my @rules = $indexrules->list_filter_rules()
+
+foreach $p_rule (@rules) {
+	my %rule = %$p_rule;
+	$rule{'name'}
+	$rule{'action'}
+	$rule{'occurences'}
+	$rule{'promote_val'}
+	my $p_string = $rule{'p_string'};
+	foreach (@$p_string) {
+
+		}
+
+=cut
+
+
+=item list_system_rules
+
+
+
+=cut
+
+
+=item listrealms
+
+Usage:
+	my @realms = $::realms->listrealms('all');
+
+Returns an array of references to all realms which match the attribute parameter.
+
+=cut
+
+
+=item load
+
+Usage:
+	$::realms = &fdse_realms_new();
+	my $err = $::realms->load();
+	if ($err) {
+		print "<P><B>Error:</B> $err.</P>\n";
+		}
+
+=cut
+
+
+=item load_custom_metadata
+
+Usage:
+
+	$err = &load_custom_metadata( $URL, \%pagedata );
+	next Err if ($err);
+
+=cut
+
+
+=item load_files_ex
+
+Usage:
+	my $err = &load_files_ex( $support_dir );
+
+This function attempts to load all the script-specific data from files.  Sequence:
+
+	require's common.pl
+	uses common.pl to call &ReadInput to process user commands
+
+	based on user's commands, may require common_parse_page.pl and/or common_admin.pl
+
+	changes directory to data folder
+	loads strings
+	loads realms
+	loads rules
+
+Failures with any of these actions are considered fatal errors, and the return values are set appropriately.
+
+=cut
+
+
+=item load_pics_descriptions
+
+Usage:
+	my (@pics_codes, @pics_names, @pics_values) = ();
+	$err = &load_pics_descriptions( 'RASCi', \@pics_codes, \@pics_names, \@pics_values );
+	next Err if ($err);
+
+=cut
+
+
+=item log_search
+
+Usage:
+	my $err = &log_search( $realm, $terms, $rank, $documents_found, $documents_searched );
+
+Where:
+	$realm == the realm name; 'All' for cases where the realm hasn't been specified
+	$terms * == the literal string that the user typed in.
+	$rank == the starting number in displaying hits.  will be 1 for first search, 11 for "Next", 21 for "Next" after that, etc.
+			used to calculate the depth that visitors go in searching for data
+	$documents_found == integer; total documents matching $terms.  in theory $ranks <= $documents_found
+
+* when writing to the log, any commas or line breaks will be stripped from the Terms. Also, they will be &html_encode'd so "<" => "&lt;" etc.
+
+The function internally looks up the visitor IP/hostname and the current time.
+
+The $err is typically discarded (no reason to frighten visitors)
+
+=cut
+
+
+=item migrate_log
+
+Usage:
+	&migrate_log( 'search.log.txt' );
+
+Migrates a text log from the version before 2.0.0.0029 to the newer version.
+
+Handles cases where the text logfile contains a mix of old and new records.
+
+Writes status and error handling text to stdout.
+
+The entire function is wrapped in an eval statement to protect against Time::Local not being available, or Time::Local trying to kill the process.
+
+=cut
+
+
+=item pagedata_from_file
+
+Usage:
+	($err, $url) = &pagedata_from_file( $file, $URL, \%pagedata, \$fr );
+
+$fr is an initialized filter rules object (passed by reference between calls to pagedata_from_file for efficiency.
+
+=cut
+
+
+=item parse_pics_label
+
+Usage:
+	my ($is_denied, $require_approval, $err) = $self->parse_pics_label( $text );
+
+Determines whether there is a PICS meta tag in the HTML $text supplied.  If there is, and if this script is concerned with PICS (as evidenced by the appropriate %::Rules), then it parses the tag and compares values to the %::Rules maximums.
+
+If it finds that the document will $require_approval, it notes this and continues parsing.  If it finds that text document $is_denied, it exits immediately.  The $err contains information about the final rule violated.
+
+=cut
+
+
+=item parse_search_terms
+
+Usage:
+		my ($bTermsExist, $Ignored_Terms, $Important_Terms, $DocSearch, $RealmSearch) = &parse_search_terms( $::FORM{'terms'}, $::FORM{'match'} );
+
+This function takes the user's search terms and builds a set of regular expressions that can be used to parse the index files.  Also builds a SQL select statement that will select the proper records.
+
+=cut
+
+
+=item parse_text_record
+
+Usage:
+	($is_valid, %pagedata) = &parse_text_record( $textline );
+
+Converts a line of text from an index file into a pagedata hash.
+
+=cut
+
+
+=item pppstr
+
+Usage:
+	&pppstr(100, $!, $^E);
+
+This is the Paragraph-Print Parse String function.
+
+=cut
+
+
+=item ppstr
+
+Usage:
+	&ppstr(100, $!, $^E);
+
+This is the Print Parse String function.
+
+=cut
+
+
+=item present_queued_pages
+
+Usage:
+	&present_queued_pages( $realm );
+
+Displays a list of all pages waiting for approval.
+
+=cut
+
+
+=item print_realm_table_header
+
+Prints the TH row.
+
+=cut
+
+
+=item print_realm_table_row
+
+Prints realm information and commands.
+
+Usage:
+
+	$index_size_bytes = &print_realm_table_row( $p_realm_data );
+
+=cut
+
+
+=item process_queued_pages
+
+Handles the user's Approve/Deny/Wait commands against the list of waiting pages.
+
+=cut
+
+
+=item process_text
+
+Usage:
+	my ($err, $no_index_but_follow, $no_follow, $is_redirect, $full_redir_url, $index_as, $lastmodt, $size) = &process_text( \$text, $url, $b_is_binary, $size_override );
+
+=cut
+
+
+=item pstr
+
+Usage:
+	my $string = &pstr(100, $!, $^E);
+
+This is the Parse String function.  The first argument is the line number from strings.txt from which to pull the template string.  All remaining strings in the argument list are substituted as $s1, $s2, $s3, etc., in the template string.
+
+=cut
+
+
+=item query_file
+
+&query_realm implementation for file-based indexes
+
+=cut
+
+
+=item query_realm
+
+Usage:
+	$err = &query_realm( $realm, $url_pattern, $start_pos, $max_results, \%crawler_results );
+	if ($err) {
+		print "<P><B>Error:</B> $err.</P>\n";
+		}
+
+=cut
+
+
+=item query_runtime
+
+&query_realm implementation for runtime realms
+
+=cut
+
+
+=item quit
+
+Usage:
+	$err = $gf->quit($b_save_file);
+	next Err if ($err);
+
+Closes the cache filehandle, and deletes the file (unless $b_save_file is set).
+
+=cut
+
+
+=item raw_get
+
+Abstraction layer for choosing between &raw_get_raw and &raw_get_alarm
+
+=cut
+
+
+=item raw_get_alarm
+
+Same as &raw_get(), but wrapped with a Unix alarm to protect against unresponsive hosts.
+
+=cut
+
+
+=item raw_get_raw
+
+raw_get_raw makes the actual socket-level request. The higher-level webreqest function handles robots exclusion and redirects.
+
+=cut
+
+
+=item read_tokens
+
+Returns the hash of auth_tokens from the tokens file.
+
+Usage:
+	($err, %tokens) = &read_tokens();
+	if ($err) {
+		print "<P><B>Error:</B> $err.</P>\n";
+		}
+
+=cut
+
+
+=item realm_count
+
+Usage:
+	my $int_realms = $::realms->realm_count('all');
+	my $int_bound_realms = $::realms->realm_count('has_base_url');
+
+Returns an integer for the number of realms that match the attribute passed as an argument.  If not attribute is passed, returns the total number of realms.
+
+=cut
+
+
+=item realm_interact
+
+Usage:
+	my %code = ();
+	&realm_interact( $p_realm_data, \%code );
+
+	Assumes
+	my ($i_url, $i_lastmodt, $i_record, %pagedata, $write_err) = ()
+
+	use $i_line to seek for a resume operation
+	$i_line is also incremented with the record count, during operations, for use suspend/resume operations
+
+
+	standard Err block handling
+
+Returns
+
+	$code{'init'}
+	$code{'resume'}
+
+	$code{'suspend'}
+	$code{'abort'}
+	$code{'finish'}
+
+	$code{'get_next'} assigns to ($i_url, $i_lastmodt, $i_record)
+
+	$code{'update'} writes based on $i_url / %pagedata
+	$code{'insert'} writes based on %pagedata
+	$code{'preserve'} ($i_url / $i_record)
+	$code{'delete'} ($i_url)
+
+=cut
+
+
+=item rebuild_realm
+
+Usage:
+	my ($err, $is_complete) = &rebuild_realm( $realm );
+
+Attempts to rebuild the realm. Does The Right Thing based on the type of realm we're dealing with.
+
+=cut
+
+
+=item regkey_validate
+
+Usage:
+	$is_valid = &regkey_validate( $::Rules{'regkey'} );
+
+=cut
+
+
+=item regkey_verify
+
+Usage:
+	&regkey_verify();
+
+Returns FDSE version, administrator last-login time, Freeware/Trial/Registered mode, and registration key.
+
+=cut
+
+
+=item remove
+
+Usage:
+	$::realms->remove( $name, $permanent );
+
+No error handling -- this just modifies the in-memory copy, it doesn't persist to disk.
+
+=cut
+
+
+=item resume_file_position
+
+Usage:
+	$gf->resume_file_position($pos);
+
+Treats $pos == 0 as start position, so an argument of 0 will cause nothing to happen.
+
+=cut
+
+
+=item rewrite_url
+
+
+
+=cut
+
+
+=item s_AddURL
+
+Usage:
+	$err = &s_AddURL($b_IsAnonAdd, $Realm, @AddressesToIndex);
+
+This is the main function for adding web pages to the realms, both for administrators and anonymous visitors. Internally handles the crawling, error handling, HTML parsing, and storage.
+
+If any error occurs, then s_AddURL will handle it by printing to the screen.  However, it will also return a copy of the last error experienced, for use by routines which programmatically call s_AddURL, like s_CrawlEntireSite.
+
+=cut
+
+
+=item s_CrawlEntireSite
+
+Usage:
+	my ($err, $is_complete) = &s_CrawlEntireSite( $realm );
+
+=cut
+
+
+=item s_create_edit_rule
+
+Usage:
+	$err = &s_create_edit_rule();
+
+Presents the HTML form for creating or editing a Filter Rule. Handles submission of that form as well.
+
+Error handling: returns a localized text error fragment if there is a problem. Otherwise writes status to the screen.
+
+=cut
+
+
+=item save_custom_metadata
+
+Usage:
+	$err = &save_custom_metadata( $url, %metadata );
+	next Err if ($err);
+
+Call with an undefinited second parameter to delete the entry.
+
+=cut
+
+
+=item save_realm_data
+
+Usage:
+	my $err = $::realms->save_realm_data();
+
+Takes the current $::realms object and persists it to the associated file. Returns the error/success of the operation.
+
+Since save_realm_data is typically called whenever state has changed, this method also flushes all caches.
+
+=cut
+
+
+=item sendmail_build_raw_message
+
+
+
+=cut
+
+
+=item sendmail_datetime
+
+Usage:
+	$time_str = &sendmail_datetime($time_int);
+
+=cut
+
+
+=item sendmail_socket
+
+Attempts to send an email message through the specified SMTP gateway.
+
+Returns $err if something goes wrong. Returns $trace of all socket activity regardless.
+
+=cut
+
+
+=item setpagecount
+
+Usage:
+	$name = "My Realm";
+	$n_pages = 1000;
+	print "<P>Now there are $n_pages pages in realm '$name'!</P>\n";
+	$err = $::realms->setpagecount($name, $n_pages);
+	if ($err) {
+		print "<P><B>Error:</B> $err.</P>\n";
+		}
+
+=cut
+
+
+=item str_jumptext
+
+Usage:
+	my ($jump_sum, $jumptext) = &str_jumptext( $current_pos, $units_per_page, $maximum, $url, $b_is_exact_count );
+
+	$jump_sum = "Documents 1-10 of 15 displayed."
+	$jumptext = "<P><- Previous 1 2 3 4 5 Next -></P>"
+
+Everything is 1-based.
+
+=cut
+
+
+=item str_search_form
+
+Usage:
+	my $html = &str_search_form( $url );
+
+Returns the text of a search form whose FORM ACTION attribute points to $url.  Based on 'searchform.htm' template.
+
+Uses variable $url because, internally, we use safer relative URL's.  For exporting the search form to other sites, though, we need to be able to create the search form with an absolute URL.
+
+=cut
+
+
+=item test_file_based_index
+
+Usage:
+
+	$err = &test_file_based_index( $file, $b_verbose );
+	next Err if ($err);
+
+=cut
+
+
+=item test_handler_syntax
+
+Usage:
+
+	$err = &test_handler_syntax( $b_verbose, $private{'pdf utility folder'}, 'XPDF',
+		'pdfinfo' => 'Usage: pdfinfo',
+		'pdftotext' => 'Usage: pdftotext',
+		);
+	next Err if ($err);
+
+Performs an interactive test of the resources located at the folder location.  Checks that folder syntax is valid, that it exists, and that this scirpt can properly shell out to the commands.
+
+=cut
+
+
+=item text_record_from_hash
+
+Creates a textfile record out of the constituent fields.
+
+Usage:
+	my ($err, $text_record) = &text_record_from_hash(\%pagedata);
+
+=cut
+
+
+=item timegm
+
+Usage:
+	my %timecache = ();
+	$time = &timelocal($sec,$min,$hours,$mday,$mon,$year,\%timecache);
+	$time = &timegm($sec,$min,$hours,$mday,$mon,$year,\%timecache);
+
+Arguments:
+	$mday is human time, i.e. 1..31
+	$mon is computer time, i.e. 0..11
+	$mon can be a text string like "JUN" or "JUL"
+	$year should be 4-digit; if less than 999, some sort of algorithm will force a 4-digit year.
+
+These routines were taken from the Time::Local module.
+
+They have been extracted into small functions so that they can be safely called from platforms that due not have the Time::Local modules install. Also, the error handling has been changed so that it never croaks (what were they smoking when they designed it that way?). Caching has been cleaned up and made optional.
+
+Error Handling:
+	Will return 0 if unable to handle the input values.
+	Will return 0 if out-of-band year (less than 1970 or more than 2037)
+	All other range checking has been removed.
+
+=cut
+
+
+=item timelocal
+
+
+
+=cut
+
+
+=item ue
+
+Similar to url_encode, but accepts and returns array values.  No longer coerces undef() argument to '' in output.
+
+=cut
+
+
+=item ui_AdminPage
+
+Usage:
+	&ui_AdminPage();
+
+Default view into the search engine.
+
+=cut
+
+
+=item ui_BCST
+
+Usage:
+
+	$err = &ui_BCST();
+	next Err if ($err);
+
+This interface is used to setup and test binary converters, like XPDF and Antiword.  It is the admin user interface to the underlying workings of the $private{'handlers'} object.
+
+Primary actions are:
+
+	* list all known converters and their status
+
+	* perform basic syntax testing on config options like $private{'pdf utility folder'}
+
+	* perform advanced testing by building an index that includes binaries
+
+	* perform integration tests by checking whether "Ext" and "Crawler: Ignore Links To" agree with the converter settings
+
+	* link to relevant help files for more information
+
+=cut
+
+
+=item ui_DataStorage
+
+
+
+=cut
+
+
+=item ui_DeleteRecord
+
+Usage:
+	&ui_DeleteRecord();
+
+DeleteRecord provides an interactive HTML interface for record deletions. It allows:
+	record deletion based on Realm and URL(s)
+	querying for multiple records based on URL patterns
+It is primarily called from the AdminVersion output. It can also be called by itself, for pattern-deletes.
+
+if $realm and $query_pattern
+
+	DeleteRecord will search $realm for all records which match $query_pattern.
+	They are shown to the user, who can then choose whether to delete all those records or not
+
+else if $realm and @urls_to_delete
+
+	DeleteRecord will try to delete all the records by calling update_realm
+
+else
+
+	DeleteRecord will offer a delete interface - browse realm or select realm, type in URL to delete
+
+
+In $query_pattern, ".*" will be mapped to "%" for SQL queries.
+
+Because the @url_patterns may be handed off to SQL, only .* can be used safely. .* will be mapped to % for SQL queries. However, other Perl regular expressions will be passed through, so enhanced Perl expressions (or SQL expressions) can still be leveraged if the user knows about the underlying data storage system. Code-executing regular expressions using ?{} will be stripped for security.
+
+=cut
+
+
+=item ui_FilterRules
+
+This function handles the admin user interface for managing filter rules.
+
+Usage:
+	&ui_FilterRules();
+
+Error handling is done by printing HTML to the end user.
+
+=cut
+
+
+=item ui_GeneralRules
+
+Usage:
+	&ui_GeneralRules( $action_name, $action_value, @settings );
+
+Displays the settings from the %::Rules array, and the descriptions for each settings. Allows validated edits for each setting based on datatype.
+
+In general, the %::Rules architecture should be replaced with an array. Using an English-keyed hash is hard to translate, and also uses more memory.
+
+=cut
+
+
+=item ui_License
+
+Usage:
+	&ui_License();
+
+Allows users to select one of three license modes: Freeware, Trial Shareware, and Registered Shareware. Allows user to input registration key.
+
+=cut
+
+
+=item ui_ManageAds
+
+This prints the admin view HTML for controlling advertisements. It also handles the action of the forms on this UI, including changing positions, defining new ads, and reset usage data.
+
+=cut
+
+
+=item ui_ManageRealms
+
+Usage:
+	&ui_ManageRealms();
+
+Presents the HTML form used to define a new realm, or to customize an existing realm.
+
+=cut
+
+
+=item ui_PersonalSettings
+
+Usage:
+	&ui_PersonalSettings();
+
+Controls email settings, password, security, etc.
+
+=cut
+
+
+=item ui_Rebuild
+
+Usage:
+	&ui_Rebuild();
+
+Attempts to rebuild the given realm.
+
+=cut
+
+
+=item ui_ReviewIndex
+
+Usage:
+	&ui_ReviewIndex();
+
+This function prints out the AdminVersion line listings for up to $max_results_to_show in the given realm, starting at $start_pos. Mainly a wrapper around &query_realm().
+
+TODO: standardize that search interface that DeleteRecord ended up. just have a standard query interface
+
+=cut
+
+
+=item ui_Rewrite
+
+Manages the URL-rewriting patterns
+
+=cut
+
+
+=item ui_UserInterface
+
+Usage:
+	&ui_UserInterface();
+
+Handles entire process of editing user-interface specific settings.
+
+=cut
+
+
+=item ui_ViewStats
+
+Usage:
+	&ui_ViewStats();
+
+Provides full user interface for viewing search log.
+
+All error handling is done via HTML presented to the user; no errors are returned.
+
+=cut
+
+
+=item update_file
+
+Usage:
+	my ($err, $entry_count, $duplicates) = &update_file( $realm, \%crawler_results );
+	if ($err) {
+		print "<P><B>Error:</B> $err.</P>\n";
+		}
+
+=cut
+
+
+=item update_realm
+
+Incorporates the results of a crawl - stored in the %crawler_results hash - into the underlying storage container for $realm. Includes adding new records, updating existing records, and deleting expired records.
+
+Usage:
+	my ($err, $total_records, $new_records, $updated_records, $deleted_records) = update_realm( $realm, \%crawler_results );
+	if ($err) {
+		print "<P><B>Error:</B> $err.</P>\n";
+		}
+	else {
+		print "<P>There are now $total_records web pages in the '$realm' realm - $new_records records created; $updated_records updated; $deleted_records removed.</P>\n";
+		}
+
+=cut
+
+
+=item uri_merge
+
+
+
+=cut
+
+
+=item validate
+
+This function takes all the parameters that could make up a filter rule, and determines whether they are valid or not.  Returns a text error message if the rule would not be valid.
+
+Usage:
+	$err = $FR->validate($enabled, $name, $action, $promote_val, $analyze, $mode, $occurrences, $apply_to, $apply_to_str, $p_strings, $p_litstrings);
+	if ($err) {
+		print "<P><B>Error:</B> $err.</P>\n";
+		}
+
+=cut
+
+
+=item webrequest
+
+Handles high-level HTTP request.
+
+=cut
+
+
+=item write_tokens
+
+Saves the %tokens hash to the auth tokens file.
+
+Usage:
+	$err = &write_tokens(%tokens);
+	if ($err) {
+		print "<P><B>Error:</B> $err.</P>\n";
+		}
+
+=cut
+

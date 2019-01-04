@@ -1,0 +1,69 @@
+<p><b>Email Settings</b> (<a href="%help_file%1084.html" target="_blank">Help</a>)</p>
+<blockquote>
+	<p>Provide the information below so that this script can contact you. Currently the script can be configured to send you mail when somebody adds a new URL (see Filter Rules).</p>
+	<p>After setting email info, <a href="%admin_url%&amp;Action=PS&amp;subaction=TestMail">send a test message</a> to confirm the settings.</p>
+	<p>Use this <a href="http://www.xav.com/mx_lookup.pl" target="_blank">SMTP server lookup tool</a> if you need help determining your mail server.</p>
+	<table border="1" cellpadding="4" cellspacing="1">
+	<tr>
+		<th>Name</th>
+		<th>Value</th>
+	</tr>
+	<tr valign="top" class="fdtan">
+		<td align="right"><b>Email Address:</b></td>
+		<td>
+			<input name="admin notify: email address" /><br />
+			<font size="-2">ex: admin@mysite.tld</font>
+		</td>
+	</tr>
+	<tr valign="top" class="fdtan">
+		<td align="right"><b>SMTP Server:</b></td>
+		<td>
+			<input name="admin notify: smtp server" /> optional<br />
+			<font size="-2">ex: mail.mysite.tld</font>
+		</td>
+	</tr>
+	<tr valign="top" class="fdtan">
+		<td align="right"><b>Sendmail Program:</b></td>
+		<td>
+			<select name="admin notify: sendmail program">%sendmail_options%</select> optional<br />
+			<font size="-2">ex: /usr/sbin/sendmail -t</font>
+		</td>
+	</tr>
+	</table>
+	<p>To send mail, this script needs either an SMTP server or a sendmail program. If both are defined, the sendmail program will be used.</p>
+	<p><input type="submit" class="submit" value="Save Data" /></p>
+</blockquote>
+<p><br /></p>
+<p><b>Security Settings</b></p>
+<blockquote>
+	<table border="1" cellpadding="4" cellspacing="1">
+	<tr>
+		<th>Name</th>
+		<th>Value</th>
+	</tr>
+	<tr class="fdtan">
+		<td align="right"><b>Session Timeout:</b></td>
+		<td><input name="security: session timeout" /></td>
+	</tr>
+	</table>
+	<p>The session timeout is the number of minutes of inactivity before the script will prompt for a password again.</p>
+	<table border="1" cellpadding="4" cellspacing="1">
+	<tr>
+		<th colspan="2">Reset Password</th>
+	</tr>
+	<tr class="fdtan">
+		<td align="right"><b>Old Password:</b></td>
+		<td><input name="op" type="password" /></td>
+	</tr>
+	<tr class="fdtan">
+		<td align="right"><b>New Password:</b></td>
+		<td><input name="np" type="password" /></td>
+	</tr>
+	<tr class="fdtan">
+		<td align="right"><b>Confirm New:</b></td>
+		<td><input name="cp" type="password" /></td>
+	</tr>
+	</table>
+	<p><input type="submit" class="submit" value="Save Data" /></p>
+</blockquote>
+<p><br /></p>

@@ -1,0 +1,558 @@
+VERSION 2.0.0.0073
+English
+text/html; charset=iso-8859-1
+ltr
+Friday
+Thursday
+Wednesday
+January
+February
+Search Results
+Ignored: <i>$s1</i>.<br />
+Your search for <i>$s1</i> found the following documents (of $s2 documents searched):
+Your search for <i>$s1</i> did not return any matches ($s2 documents were searched):
+Displaying documents $s1-$s2 of $s3, with best matches first:
+Documents $s1-$s2 of $s3 displayed.
+Results Pages:
+Previous
+Next
+No documents were found.
+Perl execution error within DBM code - $s1 - [<a href="$s2" target="_blank">Help</a>]
+invalid argument - parameter '$s1' not defined
+Saturday
+Click here to visit <a href="$s1">$s2</a>.
+Monday
+Sunday
+March
+December
+Tuesday
+<p><b>Error:</b> $s1.</p>
+November
+October
+April
+September
+August
+Excerpt
+July
+another process has a write lock - waited $s1 seconds
+unable to rename file '$s1' to '$s2' - $s3
+unable to set binmode on file '$s1' - $s2
+May
+unable to get a shared read lock on file '$s1' - $s2
+unable to append to file '$s1' - $s2
+unable to write to file '$s1' - $s2
+unable to read from file '$s1' - $s2
+Description
+oatmeal cookies
+error while reading file '$s1'. Read only $s2 of $s3 bytes
+June
+unable to release lock on file '$s1' - $s2
+query pattern '$s1' contains illegal ?{} code-executing regular expression
+unable to evaluate pattern '$s1' - $s2
+unable to close file '$s1' - $s2
+<p><b>Warning:</b> $s1.</p>
+unable to delete file '$s1' - $s2
+unable to lookup name '$s1'
+Case Sensitive
+Case Insensitive
+Accent Sensitive
+Accent Insensitive
+Example
+HTML Entities
+Byte Number
+unable to read from folder '$s1' - $s2
+robots exclusion file '$s1' forbids access to '$s2'
+-> scanning folder '$s1'...<br />
+access denied by filter rule '$s1' because there were too few of the following strings in the $s3: '$s4'. Found $s5 instances and the minimum required is $s2
+loading filter rules
+document contains a $s1 PICS label of $s2. This search engine has been configured to accept only values of $s3 or lower
+the value of '$s1' must be an integer between $s2 and $s3
+unable to update file '$s1' - $s2
+we are seeking to position $s1 in the working_copy file, but that file has size $s2. This is normal if a previous operation timed out; otherwise there may be something weird going on, in which case you should send an email to the script author
+unable to seek to position $s1 in file '$s2' - $s3
+Error
+URL
+string '$s1' contains illegal characters '$s2'
+unable to get an exclusive write lock on file '$s1' - $s2
+access denied by filter rule '$s1' because the following strings were found in the $s3: '$s4'. Found $s5 instances and the minimum allowed is $s2
+too little whitespace - only $s1 of document. Minimum whitespace ratio is $s2
+document too small at $s1 bytes. Minimum size is $s2 bytes
+document redirects to '$s1'
+the robots META tag forbids access to this document
+this program is trying to seek to position $s1, but the file '$s2' is only of size $s3. This should not happen.  It may be due to a disk quota being exceeded, in which case this program will try to write data to the hard disk, but the operating system will not save the data. Please check whether your disk quota has been exceeded
+Requires Approval by filter rule '$s1' because the following strings were found in the $s3: '$s4'. Found $s5 instances and the minimum required is $s2.
+Document Text
+Hostname
+Requires Approval by filter rule '$s1' because only the following strings were found in the $s3: '$s4'. Found $s5 instances and the maximum allowed is $s2.
+document will not be included in the index because it is denied by a "noindex,follow" filter rule
+88-anchor
+Review <a href="$s1./1002.html" target="_blank">this help topic</a> for instructions on how to reset or recover lost passwords.
+Value
+Environment Variables
+System Information
+unable to load module '$s1' - $s2
+Create New Realm
+Delete Records
+Admin Page
+Default Value
+<p><b>Delete Log Files</b></p><p>You may delete your log files to conserve space.</p><p>The CSV log stores detailed information about all searches. This information is used for most graph views.</p><p>The DBM logs store information about search strings and which are the most popular. This information can be used to display the most popular searches within your templates. This can also be used to make two of the graphs. You should delete your DBM files whenever you change the setting "$s1".</p>
+Edit Records
+100-anchor
+Total $s1 impressions since $s2 ($s3)
+you have been logged out
+Detected legacy log file format... converting to newer format...
+pattern match failed for '$s1'
+Finished with $s1 records so far.
+Usage Statistics
+Visit $s1 to control whether your visitors can add to these realms.
+Are you sure you want to delete this object?
+The system settings change that was just made <b>requires</b> that you rebuild all realms.
+List All Searches
+or group by:
+Entire Search String
+Last Modified
+saved settings
+Number of Documents Found
+sent test message
+Below is a transcript of the transaction:
+Hour of Day
+Day of Week
+- linear over time
+- cyclic
+Click on a column heading to sort by that column.
+Rebuild
+Revisit Old
+ID
+Visitor IP or Hostname
+UnixTime
+Date Time
+reset usage data for all advertisements
+Search Terms
+Starting Hit
+Documents Found
+Documents Searched
+Individual Search Terms
+Day
+Hour
+Weekday
+Each search returned an average of $s1 documents.
+Handled $s1 total records.
+Frequency
+realm '$s1' does not have an index file
+Deny
+Paste HTML text for advertisement here.
+sendmail program '$s1' is not valid; must be listed in the @sendmail array
+Advertising System
+Actions
+Reset Count
+Set all to:
+Receive approximately $s1 impressions per day
+Weight
+Keywords
+Overview
+Size
+Review
+log file '$s1' does not exist (possibly no searches have been logged yet)
+Pages
+Data Type
+this functionality is not available in the freeware version; see 'Update License'
+General Settings
+Approve Pages
+Realm
+Filter Rules
+User Interface-Related Settings:
+Some of these General Settings play a role in how the search engine behaves, such as the default number of hits to show in the result list.
+User Interface
+Base URL
+help with network errors
+Test Mail
+The list of links appearing at the bottom of the public search pages - includes Search Tips, Add New URL, and Main Page.
+rule '$s1' does not allow '$s2' as a value - validation failed
+The list of links appearing at the bottom of the public search pages - includes Search Tips and Main Page. For configurations that don't allow users to add their own URL.
+Add New URL
+not allowed to add URL
+<p><b>Success:</b> $s1.</p>
+realm '$s1' is a Filtered Realm; only website and file-fed realms may exist in Freeware mode
+The data file for this realm still exists, so you can restore everything by simply creating another realm which uses the same file name '$s1'. To recover disk space, you can manually delete this file.  It is $s2 KB.
+deleted realm
+removed $s1 records from file '$s2'
+added $s1 records to file '$s2'
+the following realms have errors, and are not available for searching
+incorrect password
+Use $s1 to try to fix the problem, or $s2 the realm.
+Personal Settings
+Documents which META refresh in less than this many seconds will be skipped. [<a href="http://www.xav.com/scripts/search/help/1196.html" target="_blank">Help</a>]
+Rebuilding realm '$s1':
+Indexing website '$s1' for realm '$s2':
+Adding Web Pages to realm '$s1':
+Indexing pages that haven't been visited in the last $s1 days.<br />
+Running in automatic mode on batch $s1.
+Manage
+Status: $s1 documents indexed; $s2 failed; $s3 waiting to be indexed.
+Please wait patiently while pages are indexed. If this process times out, $s1 to restart it.
+click here
+Crawling remote sites and updating the database may take a long time. Please be patient...
+Requesting
+The crawler has indexed $s1 web pages and is finished with this batch. The number of web pages per batch is controlled by the <a href="$s2" target="_blank">Crawler: Max Pages Per Batch</a> setting.
+Crawler Finished
+The crawler has been indexing for $s1 seconds. It has stopped to prevent a server timeout.
+This page has been indexed by our crawler. It will be added to our index once we've had a chance to review it.
+200-anchor
+Finished crawling. Now parsing files and updating index...
+Redirects
+Redirects to another URL
+took $s1 seconds.
+A new URL has been submitted to your search engine:
+Email
+IP Address
+These realms contain all pages linked from a specific starter URL.
+New URL submitted: $s1
+Continue
+This page should automatically refresh in $s1 seconds in order to continue. If it does not, <a href="$s2">click here</a>.
+These realms contain all web pages at a particular website. They are special because they don't have an index associated with them; they simply re-search the file system every time a visitor types in a search term. The recommended configuration is to not use Runtime Realms. If used, have them include only a few pages that are updated very often.
+No embedded links were found during this crawl session.
+Embedded Links:
+Click on Index Checked Links to crawl all of the links that are checked.
+The following links were found. They have not yet been indexed.
+The addresses below have been encountered before, and have failed with 'Redirect', 'Not Found', or 'Server Unreachable' errors.
+The following links were found in these pages. They've already been entered into the search index, but haven't been visited in more than $s1 days. They should be indexed again.
+The links below have been visited within the last $s1 days. They already exist in the index.
+$s1 days ago
+$s1 minutes ago
+$s1 hours ago
+using custom value
+There are $s1 files in base directory '$s2'.
+the index for this realm is not in alphabetic order. You must rebuild the index before running UpdateIndex
+URL '$s1' has been changed; updating record...
+URL '$s1' is not in the index; inserting new record...
+URL '$s1' is no longer present; deleting record...
+completed update of realm
+Continuing index process, with file $s1:
+Starting index process:
+This process took $s1 seconds.
+About $s1 complete ($s2 of $s3 files) - running for $s4 seconds; timeout in $s5
+using default value
+There are no web pages to display.
+Finished
+all pages listed
+the format of each resulting hit in the search results list
+the HTML text appearing at the bottom of every publicly-viewed page
+the HTML text appearing at the top of every publicly-viewed page
+the HTML form used for searches
+the search tips
+the CSS stylesheet for publicly-viewed pages
+template '$s1' not defined
+file '$s1' does not exist
+Text of template '$s1' (file: $s2):
+You may also <a href="$s1">review records</a> that have been permanently customized.
+this record is generated dynamically from your actual files. To change the title or description, you'll have to change those attributes of the file
+the web address '$s1' was not found in realm '$s2'
+Title
+Promote Value
+the index file has been updated, but the original HTML page has not been changed. If possible, make these changes to the document itself by adding the following HTML
+The customized values that you enter above will be saved until this document is indexed again. At your option, some customized fields can be saved indefinitely. Check the fields that you wish to save indefinitely.
+The URL field is the primary key of the index. If you change it, a new record with the new information will be created, and the old record will be removed.
+The Size attribute must be an integer, no more than 6 characters long.
+The Promote Value field is a multiplier used in weighing the relevance of search results. By default it is 01; increasing it will cause a particular web page appear earlier in the search results.
+no realms with stored records have been defined
+First, select some web pages.
+Browse All Records
+Query All Records
+URL Pattern
+you need at least 1 ad defined and 1 position activated in order for ads to be shown.  Read the Advertising Help Topics below to get started
+Query
+* URL patterns can include ".*" as the wildcard. For example, "http://www.xav.com/.*" will match "http://www.xav.com/" itself and also "http://www.xav.com/scripts/".
+expired
+There are no custom records at this time.
+completed deletion of custom metadata
+Filtered Realms
+<p><b>Permanent Deletion</b></p><p>In general, deleting web pages will not prevent them from being added again. There are two ways to permanently delete them, so that they will never be added again:</p><ol><li><p>You may edit the web page by inserting the following META tag:</p>$s1<p>This will prevent all search engines from indexing the document. This is the most efficient, straight-forward method. Use this method when forbidding documents on any web site that you control.</p></li><li><p>Or, you may add the web page URL's or patterns to the forbidden sites list by submitting the form below.</p>$s2<p>Items listed in the forbidden sites list will never again be indexed by this search engine. Use this method to forbid documents from web sites that you do not control.</p></li></ol>
+Multiple Delete Options:
+Delete all pages like:
+Searching for Records:
+Query pattern '$s1' found $s2 records.
+The following web pages will be removed from the realm:
+Uncheck any web pages that should not be removed.
+finished crawling site
+realm '$s1' is a runtime realm; no data is stored for this realm
+Requesting start file '$s1'...
+Discovered $s1 links on the page.
+Finished rebuilding realm.
+authentication token not found; your session may have timed out
+could not save password
+new password saved. You may now log in
+Your session has expired.  Please login again.
+passwords do not match
+password cannot be blank
+Enter a web address to start the crawler. The initial page will be retrieved over the web. Then all links on the page will followed, until the entire site has been indexed.
+Enter a web address to start the crawler. When you submit the form, this script will retrieve the page over the web, and save its contents in the index.
+There are now $s1 web pages in the '$s2' realm - $s3 records created; $s4 updated; $s5 removed.
+Add New Site
+Enter a web address to start the crawler. When you submit the form, this script will retrieve the page over the web, and save its contents in the index. Later you may follow any or all links found in the document.
+Manage Data Storage
+new password saved
+Review Pending
+record line found for realm '$s1', which no longer exists
+the pending file is not properly sorted. Some entries will be deleted. You will have to Synchronize all realms
+Encountered URL '$s1' after URL '$s2' in the pending file - alpha rules say their order should have been switched.
+Removed $s1 invalid records.
+Removed $s1 records for outdated realms.
+300-anchor
+Found $s1 total records, including $s2 cached error pages.
+Pending Count
+Expected Count
+Wait Pages
+Error Pages
+Synchronize
+Remove Duplicates
+<p>Action <b>Synchronize</b> will extract all the links from your index file and make sure they are present in the pending file. (The index file is the authoritative data source - the pending file follows it.)</p><p>"Pending Count" is the number of web pages that should be in the index, according to the pending file.</p><p>"Expected Count" is the number of web pages in the index when the realm pagecount was last updated.</p><p>If the numbers differ, use the <b>Synchronize</b> action. That will query your actual index to find out which pages you have; then it will update the pending file and the realm pagecount with the correct information.</p><p>"Wait Pages" are records pointing to a URL that this script knows about, but that it has not indexed yet. These are used by website realms when the crawler tries to discover all the links in a particular site. During the Rebuild process, all Wait Pages should be converted into actual records or cached error records. If a realm has a non-zero Wait Pages count, then it probably has not finished its rebuild process.</p><p>Action <b>Remove Duplicates</b> will search your index for duplicate entries and remove them.</p>
+Verbose
+Removed duplicate entry for '$s1'.
+Finished removing duplicates (removed $s1).
+Updated existing record.
+Updating pagecount for realm '$s1' to $s2.
+These realms contain pages from anywhere on the Internet. When these realms are rebuilt, they will automatically try to follow every link they encounter. The only restrictions on their indexing come from whatever custom Filter Rules have been set up.
+Search
+Correcting error: pending file lists URL '$s1', but it is not present in index.
+there are duplicate entries in the index
+Please run the Remove Duplicates command.
+Found the following pages in your index:
+server responded with '$s1 $s2' instead of '200 OK'. See <a href="$s3" target="_blank">this help file</a> for information on crawling password-protected pages
+Delete Checked Items
+<p><b>Note:</b> when you delete the persistent custom metadata, the records themselves remain intact with their current customized values. The only effect of deleting the custom data is that the record will once again have its title, description, and keywords parsed directly from the document when the record is re-indexed.</p><p>Note that using persistent custom metadata may significantly slow down the indexing process for all records. It is best to minimize the set of customized records, and to delete custom entries for any URL's which are no longer in the index.</p>
+List Custom Records
+Edit Record
+Warning: uncontrolled exit. The web server may have killed this CGI process because it was taking too long or using too many resources. [<a href="$s1" target="_blank">Help</a>]
+Realms are a way to logically organize the web pages that will be searched by this search engine.
+Manage Realms
+bypassing action because the 'Use DBM Routines' General Setting is not enabled
+You may want to rebuild all realms so that the changes you've just made can take affect.
+Click to <a href="$s1">rebuild</a> the index file for this realm.
+Always delete associated index files when deleting realm.
+Clear Error Cache
+Manage Pending File
+searches for records tied to realms that have since been deleted - will remove any found.
+removes all records of web pages that could not be retrieved
+Apply to all realms
+Follow, Noindex
+Index, Nofollow
+Runtime Realms
+install
+detected incorrect version $s1
+Only apply to certain realms
+installed language package '$s1'
+file '$s1' already exists; preserving existing copy
+You may have to install this language package manually. Visit <a href="$s1">$s1</a> and download all of the files found there. Transfer them to this server and put them in the folder '$s2'.
+attempting to download language package '$s1' for script version $s2
+<b>Status:</b> $s1.
+Visit the <a href="$s1" target="_blank"><b>FDSE User's Guide</b></a> for help getting started.
+unable to create folder '$s1' - $s2
+language folder name '$s1' is invalid - contains non-alphanumeric characters
+Install Language Pack
+<!-- translation credits -->
+Your setting is currently at the recommended system default.
+no files selected for deletion
+finished reviewing pending file
+Requires Approval
+changed language from $s1 to $s2.  Your browser cache may contain versions of the admin pages which are still in the $s1 language.  If you encounter these, you will need to refresh the page.  You may want to empty your entire browser cache now to clear it
+View all system information
+email address cannot be blank
+email address '$s1' not of the form 'text@text'
+Display this advertisement only if there is a keyword match.
+Save Data
+Allowed Positions
+New Advertisement
+Website Realms - Crawler Discovery
+Website Realms - File System Discovery
+Select realm type and provide type-specific information:
+Edit Realm
+File Name
+Display advertisement to all visitors, with additional weight if there is a keyword match.
+See $s1 to add, delete, or edit your realms.
+created new realm '$s1'
+Found $s1 pages already existing in index file '$s2'.
+Index Checked Links
+Restore Default
+web address '$s1' is outside the scope of this crawl. Addresses must match '$s2'
+Available Realms
+returned content-type was '$s1'; only base 'text' types are allowed
+server responded with '$s1 $s2' instead of '200 OK'
+too many redirects. No more than $s1 redirects are allowed
+This submission was processed automatically; no administrator approval is required.
+Delete Index File
+deleted file '$s1'
+write timeout on socket
+expected to send $s1 bytes but only sent $s2 - $s3
+Registration key - required for "Registered Shareware" mode only:
+Increasing batch size from $s1 to $s2.
+Reducing work queue from $s1 to $s2.
+Removing URL '$s1' from the work queue.
+script restarted, possibly due to a timeout. Taking steps to reduce the workload
+Building index file for realm '$s1'.
+Boolean - 0 or 1
+Integer - such as 14 or 9
+Bound integer - cannot exceed max or min
+Real number - 3.14 or 2.78
+String - such as "foo" or "bar"
+clear all
+check all
+Folder
+400-anchor
+This is not the default value. To restore the default value, $s1.
+Enable / Name
+All data will be saved as a single string, with no line breaks. Existing hard line breaks will be converted to spaces.
+set '$s1' to '$s2'
+Minimum:
+Maximum:
+Created new record.
+Existing entry removed.
+record does not pattern match
+This database file has exceeded the maximum size of $s1 bytes. Index file "$s2" would have grown to $s3 bytes had this process completed successfully.</p><p>To allow these web pages into your index, go to the admin page, choose "General Settings", and Edit setting "Max Index File Size"; or, delete some pages from your database to reduce the size.</p><p>The entire transaction has been aborted - ignore any success or failure messages below, and ignore the address count.
+Edit
+Create or Update Rule
+Delete Rule
+deleted rule '$s1'
+Deny pages that exceeded maximums
+Require approval for pages that exceed maximums
+For each category, select the maximum level tolerable. Lower numbers are more restrictive and will affect more documents.
+No action taken.
+submitted from host '$s1'
+There are no pages waiting for approval.
+Pages Waiting For Approval
+The visitors who submitted the URL are not notified of the action you take. You must email them directly to notify them.
+if this URL exists in the index, it will be removed
+this URL will be added to the index. Will update any existing record.
+no action taken; this URL will remain in the queue
+Wait
+Approve
+Name
+Index Entire Site
+Delete
+Open Realms
+Help
+Search Page
+Log Out
+this functionality is not available in the online demo. You can only use this when the search engine is installed on your own site
+unable to resolve hostname '$s1' to IP address - $s2 - $s3
+unable to create socket - $s1 - $s2
+unable to connect to host '$s1' on port $s2 - $s3 - $s4
+unable to set binmode on socket - $s1 - $s2
+unable to open pipe '$s1' - $s2
+realm name '$s1' is reserved
+Crawling
+Add Pages
+Crawl
+unable to send mail - no mail transport method configured
+<p>Thanks to the strong support of our user community, the Fluid Dynamics Search Engine is able to provide fast, reliable, accurate search services for thousands of sites and millions of visitors. FDSE demonstrates that quality software is important to our community of web designers and administrators. If you find this software useful on your site, then please do your share to support it today.</p><p>Your support is immediately invested back into the product in the form of bug fixes and added features. By acquiring a license once, you will be allowed to use all future maintenance releases for free. To acquire a registration key, visit <a href="http://www.xav.com/scripts/search/purchase.html">www.xav.com/scripts/search</a>.</p><p><br /></p><p>* If you have purchased a license at any time in the past, but do not have a registration key, please contact us at <a href="http://www.xav.com/keys/?Action=RLK">www.xav.com/keys</a>. We will track your order and send you a registration key.</p>
+Features
+SMTP server '$s1' did not respond properly to the '$s2' command; receive server response not beginning with 3-digit number; full text: '$s3'
+SMTP server '$s1' did not respond properly to the '$s2' command; expected '$s3' response, received '$s4'; full text: '$s5'
+error while reading data over network - $s1
+operation timed out
+error while sending data over network - $s1
+sent only $s1 bytes of $s2 total
+the registration code you entered is not valid - please contact xav.com
+cannot enable 'Registered Shareware' mode without a valid registration key
+cannot enable Freeware mode because more than one realm exists; delete extra realms first
+realm '$s1' is an Open Realm; only website and file-fed realms may exist in Freeware mode
+License Mode
+Basic functionality - allows a single website or file-fed realm with basic logging and basic filtering.
+Extended functionality for a reasonable trial period. Allows unlimited Realms, extended usage statistics, unlimited Filter Rules.
+Registered Shareware
+Trial Shareware
+Freeware Version
+saved Filter Rule '$s1'
+renamed Filter Rule '$s1' to '$s2'
+URL '$s1' has been added to the 'Forbid Sites' filter rule
+Update License
+All features, permanent. You receive the right to remove the public copyright notice.
+wrote to file '$s1'
+Search for:
+These realms contain all web pages at a particular website. The recommended configuration is to have a separate realm for each site you index.
+search data folder is not writable - $s1. Please manually set permissions on the data folder
+Character Conversion Settings
+Website Realms
+These realms contain web pages from anywhere on the Internet. They aren't tied to any particular base URL. The recommended configuration is to have one and only one Open Realm.
+No Update on Redirect
+Promote
+Require Approval
+Always Allow
+cannot auto-create realms in Freeware mode; see "Update License"
+Setting
+These character conversions are applied to both text being searched, and to the search terms themselves. After updating character conversion settings, all index files must be rebuilt. Otherwise, many searches will fail to bring up results.
+Next, all characters are converted to a corresponding value from the four right columns below, based on the two character conversion settings above. A blank space in the right hand columns means that the character will be ignored.
+First, all HTML entities are converted to their single-byte character equivalent.
+These settings control how accented and upper-case characters are handled.
+See also
+Including only files with these extensions: $s1 (<a href="$s2">Edit</a>)
+Perl version is $s1 ($s2).<br />Web server operating system is $s3.<br />Web server software is $s4.
+File-Fed Realms
+Allow binary files (Word docs, MP3 files, etc.) in Local Realms. The contents of the file are not indexed - only the filename itself.
+Follow symbolic links while building file lists for Local Realms.
+The number of days before the crawler will become interested in re-visiting a website in a Remote Realm. Note that the crawler does not start re-indexing on it's own. Rather, when you use the "Revisit Old Pages" command, the crawler will use this value to decide whether a page is "Old" or not.
+Controls whether to extract links to other sites when parsing an HTML page. For example, web page http://foo.com/foo.htm has links to http://foo.com/bar.htm, and to http://x.com. If Follow Offsite Links = 1, then both links are extracted; otherwise, only the first is extracted. Note that this only governs link extraction - you can still enter any starting URL you wish.
+Controls whether to extract links that have query strings, such as "http://foo.com/?name=value". Note that this only governs link extraction - you can still enter any starting URL you wish.
+A space-separated list of file extensions. Will not extract links to files with these extensions when parsing an HTML page. By ignoring links that probably won't lead to text-based files, the overall efficiency of the crawler is increased. Note that this only governs link extraction - you can still enter any starting URL you wish.
+Maximum number of web pages that the crawler will request during a single admin action. Setting this too high will increase the likelihood of a server timeout during a crawl session; setting it too low will be less efficient for crawling large numbers of pages. 10 - 40 is a good range. See the "Timeout" setting for another way to manage this.
+Maximum number of HTTP and HTML redirects to be followed while trying to request a single page.
+Minimum ratio of spaces to total file content. Typical text documents have a whitespace ratio of 1:6 (or 0.16). Binary data has the much lower whitespace ratio of 0.004. The whitespace ratio is used as a test to see whether a file has text content (desired) or binary content (bad), in instances where traditional content-type or -T tests fail.
+Controls whether the web crawler will respect the robots exclusion protocol. Setting this to 1 will cause robots.txt and Robots Meta tags to be ignored.
+500-anchor
+The default value to use in the search form. "0" means "Match Any Term". "1" means "Match All Terms". "2" means "Match as Phrase".  (Visitors can still manually choose whichever they want right before they search.)
+When deleting a realm, the associated index files may be deleted also. To delete index files with the realm, set this setting to 1 (checked). Otherwise, set it to 0 (unchecked).
+Space-separated list of file extensions to be indexed during the creation of Local Realms.
+When a page description is in all caps, the parse_html_ex function will convert it to lowercase.
+When a page title is in all caps, the parse_html_ex function will convert it to lowercase.
+Sometimes visitors type in search terms like "http://www.hotmail.com/" or "www.hotmail.com". They expect to just be taken to the appropriate website, rather than have a search performed on this term. FDSE can handle this three ways: 1. treat the URL as a normal search term; 2. treat the URL as a term, but at the top of the results list, say "Click here to visit URL"; 3. redirect the visitor to the URL immediately.
+Number of search results to show per page.
+Space-separated list of words that will be stripped from HTML before being stored in the index files. Keep this list full of common words to keep the index file size manageable.
+Controls whether ALT and TITLE attributes - commonly found in IMG tags - will be stored in the index file.
+Controls whether the search index will include information about all the links in a web page. This feature allows end users to search for "link:xav.com" and find all web pages that link to "xav.com". However, this adds 5-15% to the size of the index file for a rarely-used feature, and so this is disabled by default.
+Maximum bytes read from a file to generate a description (when no Meta description tag is present).
+Maximum bytes read from the Meta description tag.
+Maximum bytes read from the underlying file, or from a network web page, before passing it to the HTML parsing function. By keeping this at a reasonable value, the crawler won't choke when it encounters huge files (say, 20 MB). This limit is imposed at a very low level, when the file is first read from disk or read over the network.
+Maximum bytes allowed from the keywords Meta tag.
+Maximum bytes of normal text saved to the index file. For those who need a very lean and mean search engine that indexes only titles, descriptions, and keywords, set this value to 0. Note that this is a very high-level limit, imposed after parsing HTML. Compare with the low-level "Max Characters: File" property.
+Maximum bytes allowed for the title.
+Will not extract links to URL's longer than this when parsing an HTML page. While other "Max Characters" settings will just truncate strings (like a web page title can be stripped to the first 96 bytes), URL that exceed the maximum length will be ignored altogether. Note that this only governs link extraction - you can still enter any starting URL you wish.
+This is the maximum size, in bytes, allowed for an index file. After it reaches this size, no additional web pages can be indexed. This feature is mainly used in conjunction with the AllowAnonAdd setting, where end users can be adding their URL's to your search engine on their own. Setting the max size to 0 means there is no maximum size.
+The minimum allowed size for indexed web pages, in bytes.
+For purposes of weighting search results, a word in the description will count this many times more than a word in the file body. Setting this to zero will cause this field to not be weighted any more heavily than the rest of the document, but will speed up the search engine.
+For purposes of weighting search results, a word in the keywords will count this many times more than a word in the file body. Setting this to zero will cause this field to not be weighted any more heavily than the rest of the document, but will speed up the search engine.
+For purposes of weighting search results, a word in the title will count this many times more than a word in the file body. Setting this to zero will cause this field to not be weighted any more heavily than the rest of the document, but will speed up the search engine.
+For purposes of weighting search results, a word in the URL will count this many times more than a word in the file body. Setting this to zero will cause this field to not be weighted any more heavily than the rest of the document, but will speed up the search engine.
+The followings URLs were found while indexing realm <b>$s1</b> but there were errors during retrieval.  (The reason for each error is not recorded.)
+Allow web pages to control the URL used to reference them, using the proprietary "fdse-index-as" META tag. See help file for more information.
+This is an absolute or relative URL that is inserted before the true URL in the search results listing. Typically it is the path to a CGI script that transparently logs where visitors are going before sending them to their destination.
+Controls whether the search engine uses a database or the filesystem for searches and administrative functions.
+In the search results list, will show an example of the search term being used in the document. This is very helpful for putting the search result in context. Enabling this option causes searches to take a little longer. Also, this feature is only really useful if you delete or shrink the "Ignore Words" setting, and then rebuild your index files. Otherwise the examples aren't readable.
+When the "Show Examples: Enable" setting is on, this controls how many examples are shown to the end user. The search engine is optimized for the default setting, 1. Increasing to higher values causes searches to take longer.
+Set to: 1 to sort by relevance; 2, reverse relevance; 3, last modified time, with newest entries first; 4, reverse last modified time; 5, last indexed time, with newest entries first; 6, reverse last indexed time.
+When enabled, the search results which have an otherwise equal relevance will be randomly ordered.
+Number of seconds of idle time before the FDSE admin script restarts itself during long operations, like an index rebuild. A longer idle interval will reduce the load on the server.
+The number of seconds before a CGI script will time out on this server. Used to throttle the local file indexing and crawler processes, to prevent a server timeout.
+Disable the algorithm that guards against infinite loops when following symbolic links.
+When checked, all network socket operations use the standard, buffered input/output routines. When unchecked, network socket operations will bypass standard I/O. This setting exists to allow you to work around a bug on some Windows NT 4.0 systems which require bypassing standard IO.
+The Perl regular expression to use in place of "*" in user queries. The default, "\S{0,4}", will match zero to 4 non-whitespace characters. To match any character, including whitespace, use ".{0,4}". To match 0 to 100 characters, use ".{0,100}". Limiting the range of matches to a low number like 4 will improve performance.
+Save information about visitor searches to a log, for analysis later.
+When enabled, documents modified in the last two days will have their base relevance multiplied by 4; documents modified in the last 4 days have their relevance multiplied by 3; and documents modified in the last 8 days have their relevance multiplied by 2. Use this feature when searching time-sensitive material, like news articles.
+Allows multiple URL's in the Add URL form for administrators
+Allows multiple URL's in the Add URL form for visitors
+Number of seconds before timing out a send or receive. This feature is implemented only on platforms which support IO::Select and alarm().
+Provides the user with some control over the interface language.<br />Values: 0 -&gt; use FDSE default interface language; 1 -&gt; detect browser language, or failover to FDSE default interface language, 2 -&gt; detect user-selected language, or use default; 3 -&gt; detect user-selected language, then browser language, then default. [<a href="http://www.xav.com/scripts/search/help/1165.html" target="_blank">Help</a>]
+Makes the most popular search strings available for use within the templates. Enter the maximum number of popular search strings to make available. Set to 0 to disable this feature. [<a href="http://www.xav.com/scripts/search/help/1154.html" target="_blank">Help</a>]
+A string that will appear in the search form's "Terms" input when the form is first displayed for the user.
+Displays options for advanced realms types, realm settings, and indexing options.
+Controls whether functionality that depends on DBM files will be exposed.  DBM files works on most platforms, but not all.  If they do not work on this platform, uncheck this setting to avoid errors.
+Controls whether functionality that depends on network sockets will be exposed.  Sockets are supported on most web hosting platforms, but not all.  If they do not work on this platform, uncheck this setting to avoid errors.
+When substring matching is enabled, a search for "eat" will matching "beating" and "neat". Otherwise, "eat" will only match the whole word "eat".
+The user-agent tag of the crawler; used as an identification string during HTTP requests and robots.txt parsing.
+Website Realm - Crawler Discovery
+Javascript disabled
+not allowed to add URL because no $s1 have been created
+Open Realm
+File-Fed Realm
+Auto-create new $s1
+Accept no more than $s1 submissions during any five minute interval.
+this script allows only $s1 URL submissions during any five minute interval.  That limit has been reached.  Please try again in a few minutes
+558-anchor

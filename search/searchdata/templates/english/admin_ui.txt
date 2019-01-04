@@ -1,0 +1,133 @@
+<p><br /></p>
+
+<p><b>Language and Locale Settings</b></p>
+<blockquote>
+
+	<p>These settings control the language for the both the admin page and the search page.</p>
+
+	<table border="1" cellpadding="4" cellspacing="1">
+	<tr>
+		<th>Setting</th>
+		<th>Options</th>
+	</tr>
+	<tr class="fdtan" valign="top">
+		<td align="right"><b>Language:</b></td>
+		<td>%html_language_options%</td>
+	</tr>
+	<tr class="fdtan" valign="top">
+		<td align="right"><b>Number Format:</b></td>
+		<td>
+			<input type="radio" name="ui: number format" value="0" id="n0" /><label for="n0"> 2,345,123.99 American</label><br />
+			<input type="radio" name="ui: number format" value="1" id="n1" /><label for="n1"> 2.345.123,99 European / other</label><br />
+		</td>
+	</tr>
+	<tr class="fdtan" valign="top">
+		<td align="right"><b>Date Format:</b></td>
+		<td>
+			<input type="radio" name="ui: date format" value="0" id="d0" /><label for="d0">  01/25/2001 08:03:02 PM</label><br />
+			<input type="radio" name="ui: date format" value="1" id="d1" /><label for="d1"> Thursday, January 25, 2001</label><br />
+			<input type="radio" name="ui: date format" value="2" id="d2" /><label for="d2"> 01/25/2001</label><br />
+			<input type="radio" name="ui: date format" value="10" id="d10" /><label for="d10">  Thu 01/25/2001 08:03:02 PM</label><br />
+			<input type="radio" name="ui: date format" value="11" id="d11" /><label for="d11">  Thu, 25 Jan 2001 20:03:02 -0000</label><br />
+			<input type="radio" name="ui: date format" value="12" id="d12" /><label for="d12">  2001-01-25 20:03:02</label><br />
+			<input type="radio" name="ui: date format" value="13" id="d13" /><label for="d13">  Thu Jan 25 20:03:02 2001</label><br />
+			<input type="radio" name="ui: date format" value="14" id="d14" /><label for="d14"> 01/25/2001 20:03</label><br />
+		</td>
+	</tr>
+	</table>
+
+	<p><input type="submit" class="submit" value="Save Data" /></p>
+
+	<p>See also: <a href="%admin_url%&amp;Action=UserInterface&amp;subaction=viewmap"><b>Character Conversion Settings</b></a></p>
+
+
+</blockquote>
+
+<p><br /></p>
+
+<p><b>HTML Form for Searching - Search Results</b></p>
+<blockquote>
+
+	<p>On the search results page, the search form should be present:</p>
+
+	<p><input type="checkbox" name="sfp1" value="1" id="i1" /><input type="hidden" name="sfp1_udav" value="0" /> <label for="i1">At the top of the page, above the search results.</label></p>
+
+	<p><input type="checkbox" name="sfp2" value="1" id="i2" /><input type="hidden" name="sfp2_udav" value="0" /> <label for="i2">At the bottom of the page, below the search results.</label></p>
+
+	<p><input type="submit" class="submit" value="Save Data" /></p>
+
+</blockquote>
+</form>
+<p><br /></p>
+
+<p><b>HTML Form for Searching - Advanced</b></p>
+<blockquote>
+
+	<p>Cut and paste this HTML code to create a search form on all your web pages.</p>
+
+	<p>(You may want to update the HTML whenever you create a new Realm.)</p>
+
+	<p><tt><textarea name="search_code" rows="10" cols="90"></textarea></tt></p>
+
+	<p><b>Example:</b></p>
+
+	%html_search_code%
+
+</blockquote>
+
+<p><br /></p>
+
+<p><b>HTML Form for Searching - Simple</b></p>
+<blockquote>
+
+	<p>Cut and paste this HTML code to create a simple search form. All searches will query all realms.</p>
+
+	<p><tt><textarea name="simple_code" rows="5" cols="90"></textarea></tt></p>
+
+	<p><b>Example:</b></p>
+
+	%html_simple_code%
+
+</blockquote>
+
+<p><br /></p>
+
+<p><b>Linking Directly to Search Results</b></p>
+<blockquote>
+
+	<p>To link to search results directly, use this syntax. Note that spaces are replaced with "%20" in the query string:</p>
+
+	<p><tt><textarea name="link_code" rows="2" cols="90"></textarea></tt></p>
+
+	<p><b>Example:</b></p>
+
+	%html_link_code%
+
+</blockquote>
+
+<p><br /></p>
+
+<p><b>Advanced: Edit Templates</b></p>
+
+<blockquote>
+
+	<p>The look and feel of this search engine is controlled mainly by HTML templates, which you can customize to your needs.</p>
+
+	<table border="1" cellpadding="4" cellspacing="1">
+	<tr>
+		<th>Name</th>
+		<th>Language</th>
+		<th>Description</th>
+	</tr>
+	%html_templates%
+	</table>
+
+	<p>Click on the template name to edit.</p>
+
+	<p><b>Help:</b> <a href="%help_file%1103.html" target="_blank">List of all available variables</a></p>
+	<p><b>Help:</b> <a href="%help_file%1096.html" target="_blank">How to use conditional statements in templates</a></p>
+
+</blockquote>
+
+<p><br /></p>
+

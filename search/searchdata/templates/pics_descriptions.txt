@@ -1,0 +1,151 @@
+# Format:
+# class | code | code_name | value | value_name
+
+RASCi | n | Nudity | 0 | none
+RASCi | n | Nudity | 1 | revealing attire
+RASCi | n | Nudity | 2 | partial nudity
+RASCi | n | Nudity | 3 | frontal nudity
+RASCi | n | Nudity | 4 | frontal nudity that qualifies as a provocative display of nudity
+
+RASCi | s | Sex | 0 | none / innocent kissing or romance
+RASCi | s | Sex | 1 | passionate kissing
+RASCi | s | Sex | 2 | non-explicit sexual touching / clothed sexual touching
+RASCi | s | Sex | 3 | non-explicit sexual acts
+RASCi | s | Sex | 4 | sex crimes / explicit sexual acts
+
+RASCi | l | Language | 0 | none
+RASCi | l | Language | 1 | non-sexual anatomical reference / mild expletives / mild terms for body functions / slang
+RASCi | l | Language | 2 | profanity / moderate expletives
+RASCi | l | Language | 3 | strong language / obscene gestures / hate speech or strong epithets against any person or group
+RASCi | l | Language | 4 | crude, vulgar language / explicit sexual references / extreme hate speech / epithets that advocate violence or harm against a person or group
+
+RASCi | v | Violence | 0 | none / sports violence
+RASCi | v | Violence | 1 | injury to human beings / the death of non-human beings resulting from natural acts or accidents / damage to or disappearance of realistic objects
+RASCi | v | Violence | 2 | the destruction of realistic objects with an implied social presence
+RASCi | v | Violence | 3 | blood and gore / intentional aggressive violence / death to human beings
+RASCi | v | Violence | 4 | wanton, gratuitous violence / extreme blood and gore / rape
+
+SafeSurf | 000 | Age Range | 0 | [ no filtering ]
+SafeSurf | 000 | Age Range | 1 | All Ages
+SafeSurf | 000 | Age Range | 2 | Older Children
+SafeSurf | 000 | Age Range | 3 | Teens
+SafeSurf | 000 | Age Range | 4 | Older Teens
+SafeSurf | 000 | Age Range | 5 | Adult Supervision Recommended
+SafeSurf | 000 | Age Range | 6 | Adults
+SafeSurf | 000 | Age Range | 7 | Limited to Adults
+SafeSurf | 000 | Age Range | 8 | Adults Only
+SafeSurf | 000 | Age Range | 9 | Explicitly for Adults
+
+SafeSurf | 001 | Profanity | 0 | [ no filtering ]
+SafeSurf | 001 | Profanity | 1 | Subtle Innuendo - Subtly Implied through the use of Slang
+SafeSurf | 001 | Profanity | 2 | Explicit Innuendo - Explicitly implied through the use of Slang
+SafeSurf | 001 | Profanity | 3 | Technical Reference - Dictionary, encyclopedic, news, technical references
+SafeSurf | 001 | Profanity | 4 | Non-Graphic-Artistic - Limited non-sexual expletives used in a artistic fashion
+SafeSurf | 001 | Profanity | 5 | Graphic-Artistic - Non-sexual expletives used in a artistic fashion
+SafeSurf | 001 | Profanity | 6 | Graphic - Limited use of expletives and obscene gestures
+SafeSurf | 001 | Profanity | 7 | Detailed Graphic - Casual use of expletives and obscene gestures.
+SafeSurf | 001 | Profanity | 8 | Explicit Vulgarity - Heavy use of vulgar language and obscene gestures. Unsupervised Chat Rooms.
+SafeSurf | 001 | Profanity | 9 | Explicit and Crude - Saturated with crude sexual references and gestures. Unsupervised Chat Rooms.
+
+SafeSurf | 002 | Heterosexual Themes | 0 | [ no filtering ]
+SafeSurf | 002 | Heterosexual Themes | 1 | Subtle Innuendo - Subtly Implied through the use of metaphor
+SafeSurf | 002 | Heterosexual Themes | 2 | Explicit Innuendo - Explicitly implied (not described) through the use of metaphor
+SafeSurf | 002 | Heterosexual Themes | 3 | Technical Reference - Dictionary, encyclopedic, news, medical references
+SafeSurf | 002 | Heterosexual Themes | 4 | Non-Graphic-Artistic - Limited metaphoric descriptions used in an artistic fashion
+SafeSurf | 002 | Heterosexual Themes | 5 | Graphic-Artistic - Metaphoric descriptions used in an artistic fashion
+SafeSurf | 002 | Heterosexual Themes | 6 | Graphic - Descriptions of intimate sexual acts
+SafeSurf | 002 | Heterosexual Themes | 7 | Detailed Graphic - Descriptions of intimate details of sexual acts
+SafeSurf | 002 | Heterosexual Themes | 8 | Explicitly Graphic or Inviting Participation - Explicit Descriptions of intimate details of sexual acts designed to arouse. Inviting interactive sexual participation. Unsupervised Sexual Chat Rooms or Newsgroups.
+SafeSurf | 002 | Heterosexual Themes | 9 | Explicit and Crude or Explicitly Inviting Participation - Profane Graphic Descriptions of intimate details of sexual acts designed to arouse. Inviting interactive sexual participation. Unsupervised Sexual Chat Rooms or Newsgroups.
+
+SafeSurf | 003 | Homosexual Themes | 0 | [ no filtering ]
+SafeSurf | 003 | Homosexual Themes | 1 | Subtle Innuendo - Subtly Implied through the use of metaphor
+SafeSurf | 003 | Homosexual Themes | 2 | Explicit Innuendo - Explicitly implied (not described) through the use of metaphor
+SafeSurf | 003 | Homosexual Themes | 3 | Technical Reference - Dictionary, encyclopedic, news, medical references
+SafeSurf | 003 | Homosexual Themes | 4 | Non-Graphic-Artistic - Limited metaphoric descriptions used in an artistic fashion
+SafeSurf | 003 | Homosexual Themes | 5 | Graphic-Artistic - Metaphoric descriptions used in an artistic fashion
+SafeSurf | 003 | Homosexual Themes | 6 | Graphic - Descriptions of intimate sexual acts
+SafeSurf | 003 | Homosexual Themes | 7 | Detailed Graphic - Descriptions of intimate details of sexual acts
+SafeSurf | 003 | Homosexual Themes | 8 | Explicitly Graphic or Inviting Participation - Explicit Descriptions of intimate details of sexual acts designed to arouse. Inviting interactive sexual participation. Unsupervised Sexual Chat Rooms or Newsgroups.
+SafeSurf | 003 | Homosexual Themes | 9 | Explicit and Crude or Explicitly Inviting Participation - Profane Graphic Descriptions of intimate details of sexual acts designed to arouse. Inviting interactive sexual participation. Unsupervised Sexual Chat Rooms or Newsgroups.
+
+SafeSurf | 004 | Nudity | 0 | [ no filtering ]
+SafeSurf | 004 | Nudity | 1 | Subtle Innuendo - Subtly Implied through the use of composition, lighting, shaping, revealing clothing, etc.
+SafeSurf | 004 | Nudity | 2 | Explicit Innuendo - Explicitly implied (not shown) through the use of composition, lighting, shaping or revealing clothing
+SafeSurf | 004 | Nudity | 3 | Technical Reference - Dictionary, encyclopedic, news, medical references
+SafeSurf | 004 | Nudity | 4 | Non-Graphic-Artistic - Classic works of art presented in public museums for family viewing
+SafeSurf | 004 | Nudity | 5 | Graphic-Artistic - Artistically presented without full frontal nudity
+SafeSurf | 004 | Nudity | 6 | Graphic - Artistically presented with frontal nudity
+SafeSurf | 004 | Nudity | 7 | Detailed Graphic - Erotic frontal nudity
+SafeSurf | 004 | Nudity | 8 | Explicit Vulgarity - Pornographic presentation, designed to appeal to prurient interests.
+SafeSurf | 004 | Nudity | 9 | Explicit and Crude - Explicit pornographic presentation
+
+SafeSurf | 005 | Violence | 0 | [ no filtering ]
+SafeSurf | 005 | Violence | 1 | Subtle Innuendo
+SafeSurf | 005 | Violence | 2 | Explicit Innuendo
+SafeSurf | 005 | Violence | 3 | Technical Reference
+SafeSurf | 005 | Violence | 4 | Non-Graphic-Artistic
+SafeSurf | 005 | Violence | 5 | Graphic-Artistic
+SafeSurf | 005 | Violence | 6 | Graphic
+SafeSurf | 005 | Violence | 7 | Detailed Graphic
+SafeSurf | 005 | Violence | 8 | Inviting Participation in Graphic Interactive Format
+SafeSurf | 005 | Violence | 9 | Encouraging Personal Participation, Weapon Making
+
+SafeSurf | 006 | Sex, Violence, and Profanity | 0 | [ no filtering ]
+SafeSurf | 006 | Sex, Violence, and Profanity | 1 | Subtle Innuendo
+SafeSurf | 006 | Sex, Violence, and Profanity | 2 | Explicit Innuendo
+SafeSurf | 006 | Sex, Violence, and Profanity | 3 | Technical Reference
+SafeSurf | 006 | Sex, Violence, and Profanity | 4 | Non-Graphic-Artistic
+SafeSurf | 006 | Sex, Violence, and Profanity | 5 | Graphic-Artistic
+SafeSurf | 006 | Sex, Violence, and Profanity | 6 | Graphic
+SafeSurf | 006 | Sex, Violence, and Profanity | 7 | Detailed Graphic
+SafeSurf | 006 | Sex, Violence, and Profanity | 8 | Explicit Vulgarity
+SafeSurf | 006 | Sex, Violence, and Profanity | 9 | Explicit and Crude
+
+SafeSurf | 007 | Intolerance - (Intolerance of another person's racial, religious, or gender backround) | 0 | [ no filtering ]
+SafeSurf | 007 | Intolerance - (Intolerance of another person's racial, religious, or gender backround) | 1 | Subtle Innuendo
+SafeSurf | 007 | Intolerance - (Intolerance of another person's racial, religious, or gender backround) | 2 | Explicit Innuendo
+SafeSurf | 007 | Intolerance - (Intolerance of another person's racial, religious, or gender backround) | 3 | Technical Reference
+SafeSurf | 007 | Intolerance - (Intolerance of another person's racial, religious, or gender backround) | 4 | Non-Graphic-Literary
+SafeSurf | 007 | Intolerance - (Intolerance of another person's racial, religious, or gender backround) | 5 | Graphic-Literary
+SafeSurf | 007 | Intolerance - (Intolerance of another person's racial, religious, or gender backround) | 6 | Graphic Discussions
+SafeSurf | 007 | Intolerance - (Intolerance of another person's racial, religious, or gender backround) | 7 | Endorsing Hatred
+SafeSurf | 007 | Intolerance - (Intolerance of another person's racial, religious, or gender backround) | 8 | Endorsing Violent or Hateful Action
+SafeSurf | 007 | Intolerance - (Intolerance of another person's racial, religious, or gender backround) | 9 | Advocating Violent or Hateful Action
+
+SafeSurf | 008 | Glorifying Drug Use | 0 | [ no filtering ]
+SafeSurf | 008 | Glorifying Drug Use | 1 | Subtle Innuendo
+SafeSurf | 008 | Glorifying Drug Use | 2 | Explicit Innuendo
+SafeSurf | 008 | Glorifying Drug Use | 3 | Technical Reference
+SafeSurf | 008 | Glorifying Drug Use | 4 | Non-Graphic-Artistic
+SafeSurf | 008 | Glorifying Drug Use | 5 | Graphic-Artistic
+SafeSurf | 008 | Glorifying Drug Use | 6 | Graphic
+SafeSurf | 008 | Glorifying Drug Use | 7 | Detailed Graphic
+SafeSurf | 008 | Glorifying Drug Use | 8 | Simulated Interactive Participation
+SafeSurf | 008 | Glorifying Drug Use | 9 | Soliciting Personal Participation
+
+SafeSurf | 009 | Other Adult Themes | 0 | [ no filtering ]
+SafeSurf | 009 | Other Adult Themes | 1 | Subtle Innuendo
+SafeSurf | 009 | Other Adult Themes | 2 | Explicit Innuendo
+SafeSurf | 009 | Other Adult Themes | 3 | Technical Reference
+SafeSurf | 009 | Other Adult Themes | 4 | Non-Graphic-Artistic
+SafeSurf | 009 | Other Adult Themes | 5 | Graphic-Artistic
+SafeSurf | 009 | Other Adult Themes | 6 | Graphic
+SafeSurf | 009 | Other Adult Themes | 7 | Detailed Graphic
+SafeSurf | 009 | Other Adult Themes | 8 | Explicit Vulgarity
+SafeSurf | 009 | Other Adult Themes | 9 | Explicit and Crude
+
+SafeSurf | 00A | Gambling | 0 | [ no filtering ]
+SafeSurf | 00A | Gambling | 1 | Subtle Innuendo
+SafeSurf | 00A | Gambling | 2 | Explicit Innuendo
+SafeSurf | 00A | Gambling | 3 | Technical Discussion
+SafeSurf | 00A | Gambling | 4 | Non-Graphic-Artistic, Advertising
+SafeSurf | 00A | Gambling | 5 | Graphic-Artistic, Advertising
+SafeSurf | 00A | Gambling | 6 | Simulated Gambling
+SafeSurf | 00A | Gambling | 7 | Real Life Gambling without Stakes
+SafeSurf | 00A | Gambling | 8 | Encouraging Interactive Real Life Participation with Stakes
+SafeSurf | 00A | Gambling | 9 | Providing Means with Stakes
+
+
+
+
